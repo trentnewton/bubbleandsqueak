@@ -126,7 +126,7 @@
                             </div>
                             {% set background_image = page.header.background_image ? page.media[page.header.background_image] : page.media.images|first %}
                             <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                <img class="hide" alt="" src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
+                                <img class="hide" alt="{{ site.title|e('html') }}" src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
                             </div>
                         </div>
                     </div>
