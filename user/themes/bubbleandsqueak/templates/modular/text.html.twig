@@ -1,0 +1,42 @@
+{% set image = page.media.images|first %}
+<section id="{{ page.header.title|hyphenize }}" class="wrapper spotlight">
+    <div class="grid-container inner">
+        <div class="grid-x grid-margin-x align-middle">
+            {% if image %}
+                <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-2 medium-order-1{% else %} small-order-2 medium-order-2{% endif %}">
+                    <h2 data-aos="fade-{% if page.header.image_align == 'right' %}left{% else %}right{% endif %}" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                    <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+                    {% if page.header.payicon %}
+                        <ul class="menu expanded card-icons">
+                        {% for icon in page.header.payicon %}
+                            <li data-aos="fade-up" data-aos-duration="500">
+                                <div class="screen-reader-text">{{ icon.title }}</div>
+                                <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
+                    {% set filename_ext = image.filename|split('.') %}
+                    <img src="{{ image.url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ image.width }}" height="{{ image.height }}">
+                </div>
+            {% else %}
+                <div class="cell small-12">
+                    <h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                    <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+                    {% if page.header.payicon %}
+                        <ul class="menu expanded card-icons">
+                        {% for icon in page.header.payicon %}
+                            <li data-aos="fade-up" data-aos-duration="500">
+                                <div class="screen-reader-text">{{ icon.title }}</div>
+                                <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

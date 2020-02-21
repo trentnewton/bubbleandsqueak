@@ -1,0 +1,40 @@
+<section id="{{ page.header.title|hyphenize }}" class="wrapper prices-section">
+    <div class="grid-container inner">
+      <h2 data-aos="fade" class="major bubbles">{{ page.header.title }}</h2>
+        <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+        {% for price_grid in page.header.price_grid %}
+          <div class="prices" data-aos="fade">
+            <h3>{{ price_grid.header }}</h3>
+            <div class="prices-grid grid-x grid-padding-x small-up-2 medium-up-4 align-stretch">
+              {% for pricing_item in price_grid.pricing_item %}
+                <div class="cell pricing-item">
+                  {% if pricing_item.icon %}
+                    <div class="icon">
+                      <svg class="icon icon-{{ pricing_item.icon }}"><use xlink:href="#icon-{{ pricing_item.icon }}"></use></svg>
+                    </div>
+                  {% endif %}
+                  {% if pricing_item.title %}
+                    <h4 class="pricing-title">{{ pricing_item.title }}</h4>
+                  {% endif %}
+                  {% if pricing_item.sentence %}
+                    <p class="pricing-sentence">{{ pricing_item.sentence }}</p>
+                  {% endif %}
+                  {% for price_grid_price in pricing_item.price_grid_price %}
+                    <div class="pricing-price">
+                      <span class="pricing-group">
+                        {% if price_grid_price.amount %}
+                          <span class="pricing-currency">$</span>{{ price_grid_price.amount }}
+                        {% endif %}
+                      </span>
+                      {% if price_grid_price.period %}
+                        <span class="pricing-period">{{ price_grid_price.period }}</span>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+</section>

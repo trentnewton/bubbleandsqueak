@@ -1,0 +1,36 @@
+<section id="{{ page.header.title|hyphenize }}" class="wrapper features-section">
+    <div class="grid-container inner">
+      <h2 data-aos="fade" class="major bubbles">{{ page.header.title }}</h2>
+        <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+        <section class="features grid-x grid-margin-x">
+          {% for feature in page.header.features %}
+             <div data-aos="fade" class="card-item cell medium-6">
+                <article class="card">
+                  <div class="card-image">
+                    {% set filename_ext = page.media[feature.graphic].filename|split('.') %}
+                    <img src="{{ page.media[feature.graphic].url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height }}">
+                  </div>
+                  <div class="card-section">
+                    {% if feature.header %}
+                      <h3 class="major">{{ feature.header }}</h3>
+                    {% endif %}
+                    {% if feature.text %}
+                      {{ feature.text|markdown }}
+                    {% endif %}
+                    {% if feature.icon %}
+                      <ul class="vertical menu">
+                      {% for icon in feature.icon %}
+                        <li><svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>&nbsp;{{ icon.header }}</li>
+                      {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% if feature.url %}
+                      <a class="special" href="{{ feature.url }}">{{ feature.linktext }}</a>
+                    {% endif %}
+                  </div>
+                </article>
+             </div>
+          {% endfor %}
+        </section>
+    </div>
+</section>

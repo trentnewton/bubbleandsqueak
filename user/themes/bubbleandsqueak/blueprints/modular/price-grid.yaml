@@ -1,0 +1,46 @@
+title: Pricing Table
+'@extends': default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          type: tab
+
+          fields:
+            header.price_grid:
+              label: Pricing Table
+              type: list
+
+              fields:
+                .header:
+                  type: text
+                  label: Header
+                .pricing_item:
+                  name: pricing_item
+                  type: list
+                  label: Pricing Item
+
+                  fields:
+                    .icon:
+                      type: iconpicker
+                      label: Icon
+                    .title:
+                      type: text
+                      label: Title
+                    .sentence:
+                      type: text
+                      label: Sentence
+                    .price_grid_price:
+                      type: list
+                      label: Pricing Table Price
+
+                      fields:
+                        .amount:
+                          type: text
+                          label: Amount ($)
+                        .period:
+                          type: text
+                          label: Period

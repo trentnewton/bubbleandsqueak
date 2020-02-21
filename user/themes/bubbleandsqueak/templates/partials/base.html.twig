@@ -1,0 +1,73 @@
+{# {% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer']) %} #}
+{# {% set grid_size = theme_var('grid-size') %} #}
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% use 'blocks/base.html.twig' %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}" dir="ltr" itemscope itemtype="http://schema.org/WebSite">
+    <head>
+    {% block head deferred %}
+        <meta charset="utf-8" />
+        <title>{% if page.home == 'true' %}{{ site.title|e('html') }}{% else %}{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}{% endif %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% include 'partials/metadata.html.twig' %}
+        <link rel="canonical" href="{{ page.url(true, true) }}" />
+        <meta name="robots" content="index,follow">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url('theme://dist/assets/img/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url('theme://dist/assets/img/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url('theme://dist/assets/img/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ url('theme://dist/assets/img/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ url('theme://dist/assets/img/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="rating" content="general">
+    {% endblock head %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css">
+        {% do assets.addCss('theme://dist/assets/css/app.css') %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% include 'partials/google-analytics.html.twig' with {'page': page.find('/footer', true)} %}
+        {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %}
+        {# {% do assets.addJs('jquery', 101) %} #}
+        {% do assets.addJs('theme://dist/assets/js/app.js', {group:'bottom'}) %}
+    {% endblock %}
+
+    {% block assets deferred %}
+        {{ assets.css()|raw }}
+        {{ assets.js()|raw }}
+    {% endblock %}
+    </head>
+    {# <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}"> #}
+    <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
+        <a id="skip-nav" class="skip-nav screen-reader-text" href="#maincontent">Skip to main content</a>
+        {% include 'partials/svg.html.twig' ignore missing %}
+{#         <div class="page-wrapper"> #}
+            {% block header %}
+                {% include 'partials/navigation.html.twig' with {'page': page.find('/footer', true)} %}
+            {% endblock %}
+
+            {% block hero %}{% endblock %}
+
+            {% block body %}
+                {% block messages %}
+                    {% include 'partials/messages.html.twig' ignore missing %}
+                {% endblock %}
+                {{ block('content_surround') }}
+            {% endblock %}
+
+            {% block footer %}
+                {% include 'partials/footer.html.twig' with {'page': page.find('/footer', true)} %}
+            {% endblock %}
+
+{#         </div> #}
+
+        {% block bottom %}
+            {{ assets.js('bottom')|raw }}
+        {% endblock %}
+
+    </body>
+</html>

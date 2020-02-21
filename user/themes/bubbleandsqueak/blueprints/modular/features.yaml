@@ -1,0 +1,56 @@
+title: Features
+'@extends': default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          type: tab
+
+          fields:
+            header.features:
+              label: Features
+              type: list
+
+              fields:
+                .graphic:
+                  type: filepicker
+                  label: Photo
+                  # destination: 'user/assets'
+                  preview_images: true
+                  accept:
+                    - .jpg
+                .header:
+                  type: text
+                  label: Header
+                .text:
+                  type: editor
+                  label: Text
+                .icon:
+                  type: list
+                  label: List
+
+                  fields:
+                    .icon:
+                      type: iconpicker
+                      label: Icon
+                    .header:
+                      type: text
+                      label: Header
+                .link:
+                  type: fieldset
+                  title: Link
+                  help: Link at bottom of text
+                  info: Link
+                  text: Add link follow up link for bottom of text
+                  collapsed: true      # Initial state of fieldset (see collapsible option)
+                  collapsible: true    # Whether one can expand the fieldset or not
+                  fields:
+                    .linktext:
+                      type: text
+                      label: Link Text
+                    .url:
+                      type: text
+                      label: URL (including http)

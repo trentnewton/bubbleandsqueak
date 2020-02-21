@@ -1,0 +1,15 @@
+{% set hero_image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
+<header class="banner bubbles-container bubbles-active" {% if hero_image %} style="background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, .7)), to(rgba(0, 129, 153, .7))), url({{ hero_image.url }}); background-image: linear-gradient(to top, rgba(0, 172, 204, .7), rgba(0, 129, 153, .7)), url({{ hero_image.url }});"{% endif %} role="banner" itemscope itemtype="http://schema.org/WPHeader">
+	<div class="bubbles" id="bubbles1"></div>
+    <div class="bubbles" id="bubbles2"></div>
+    <div class="bubbles" id="bubbles3"></div>
+    <div class="bubbles" id="bubbles4"></div>
+	<div class="grid-container inner">
+		<div class="grid-x grid-padding-x">
+			<div class="large-12 cell">
+				<h1 data-aos="fade" itemprop="headline">{{ page.header.title }}</h1>
+				<div data-aos="fade" data-aos-delay="1000" itemprop="description">{{ page.header.subtext|markdown }}</div>
+			</div>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,16 @@
+name: Bubble & Squeak
+version: 1.0
+description: Default Theme
+icon:  microchip
+author:
+  name: Trent Newton
+  email: info@trentnewton.com
+  url: http://trentnewton.com
+homepage: 
+demo: 
+keywords: 
+bugs: 
+license: 
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }

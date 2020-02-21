@@ -1,0 +1,23 @@
+{% macro nav_loop(page) %}
+  {% import _self as macros %}
+  {% for p in page.children.visible %}
+    {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
+    {% if p.children.visible.count > 0 %}
+      <li class="{{ active_page }}" itemprop="url">
+        <a href="{{ p.url }}">
+          {{ p.menu }}
+        </a>
+        <ul>
+          {{ macros.nav_loop(p) }}
+        </ul>
+      </li>
+    {% else %}
+      <li class="{{ active_page }}" itemprop="url">
+        <a href="{{ p.url }}">
+          <i class="fi-list"><svg class="icon icon-{{ p.header.icon }}"><use xlink:href="#icon-{{ p.header.icon }}"></use></svg></i>
+          <span>{{ p.menu }}</span>
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

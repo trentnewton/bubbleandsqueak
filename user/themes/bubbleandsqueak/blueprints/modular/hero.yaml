@@ -1,0 +1,18 @@
+title: Hero
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        buttons:
+          type: tab
+          title: Hero
+          fields:
+            header.hero_image:
+              type: filepicker
+              label: Hero Image
+              preview_images: true
+              description: 'If not specified, this defaults to the first image found in the page''s folder'
+
+
