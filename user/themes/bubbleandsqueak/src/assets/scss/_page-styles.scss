@@ -1050,14 +1050,6 @@ a.special {
 
 	}
 
-	.output-message {
-		// margin-left: 1rem;
-		padding-bottom: $paragraph-margin-bottom;
-		font-weight: $global-weight-bold;
-		text-transform: uppercase;
-		-webkit-text-stroke: rem-calc(0.5px) rgba($white, 0.80);
-	}
-
 	.copyright {
 		text-transform: uppercase;
 		margin-top: rem-calc(24px);
@@ -1121,6 +1113,12 @@ a.special {
 
 	}
 
+}
+
+.callout.error {
+	background-image: none;
+	background-color: scale-color(get-color(alert), $lightness: 85%);
+	color: get-color(alert);
 }
 
 .map-container {
