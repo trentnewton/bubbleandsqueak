@@ -58,6 +58,12 @@ fieldset {
 
 img {
 	transition: all $transition-time;
+	opacity: 1;
+
+	&.lazy {
+		opacity: 0;
+	}
+
 }
 
 input,

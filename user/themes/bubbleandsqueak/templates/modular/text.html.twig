@@ -17,10 +17,11 @@
                         </ul>
                     {% endif %}
                 </div>
+                {% set filename_ext = image.filename|split('1x') %}
+                {% set color = GetImageColor(image.path())[0] %}
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
-                    {% set filename_ext = image.filename|split('.') %}
-                    {% set color = GetImageColor(image.path())[0] %}
-                    <img class="lazy" style="background-color: #{{ color }}" data-src="{{ image.url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ image.width }}" height="{{ image.height }}">
+                    {{ image.sizes('(max-width:26em) 100vw, 50vw').width(image.width).height(image.height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
+                    <div class="lazy-placeholder" style="background-color: #{{ color }}"></div>
                 </div>
             {% else %}
                 <div class="cell small-12">
