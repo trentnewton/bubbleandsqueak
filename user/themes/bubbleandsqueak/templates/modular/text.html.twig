@@ -19,7 +19,8 @@
                 </div>
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
                     {% set filename_ext = image.filename|split('.') %}
-                    <img src="{{ image.url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ image.width }}" height="{{ image.height }}">
+                    {% set color = GetImageColor(image.path())[0] %}
+                    <img class="lazy" style="background-color: #{{ color }}" data-src="{{ image.url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ image.width }}" height="{{ image.height }}">
                 </div>
             {% else %}
                 <div class="cell small-12">

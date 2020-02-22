@@ -62,8 +62,7 @@ fieldset {
 	border: 0;
 }
 
-img:not([src]) {
-	visibility: hidden;
+img {
 	transition: all $transition-time;
 }
 

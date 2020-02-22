@@ -8,7 +8,8 @@
                 <article class="card">
                   <div class="card-image">
                     {% set filename_ext = page.media[feature.graphic].filename|split('.') %}
-                    <img src="{{ page.media[feature.graphic].url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height }}">
+                    {% set color = GetImageColor(page.media[feature.graphic].path())[0] %}
+                    <img class="lazy" style="background-color: #{{ color }}" data-src="{{ page.media[feature.graphic].url }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height }}">
                   </div>
                   <div class="card-section">
                     {% if feature.header %}

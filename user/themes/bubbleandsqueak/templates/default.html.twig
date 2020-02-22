@@ -8,7 +8,8 @@
 				<div class="grid-x grid-margin-x">
 					{% if header.body_image %}
 						<div class="cell medium-6">
-                    		<img src="{{ page.media[header.body_image].url }}" alt="{{ feature.header }}" width="{{ page.media[header.body_image].width }}" height="{{ page.media[header.body_image].height }}">
+							{% set color = GetImageColor(page.media[header.body_image].path())[0] %}
+                    		<img class="lazy" style="background-color: #{{ color }}" data-src="{{ page.media[header.body_image].url }}" alt="{{ feature.header }}" width="{{ page.media[header.body_image].width }}" height="{{ page.media[header.body_image].height }}">
 						</div>
 						<div class="cell medium-6">
 							{{ page.content|raw }}
