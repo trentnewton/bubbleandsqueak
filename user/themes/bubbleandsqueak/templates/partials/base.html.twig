@@ -42,6 +42,9 @@
     <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
         <a id="skip-nav" tabindex="1" class="skip-nav screen-reader-text" href="#maincontent">Skip to main content</a>
         {% include 'partials/svg.html.twig' ignore missing %}
+        {% block notice %}
+            {% include 'partials/notice.html.twig' with {'page': page.find('/notice', true)} %}
+        {% endblock %}
             {% block header %}
                 {% include 'partials/navigation.html.twig' with {'page': page.find('/footer', true)} %}
             {% endblock %}
