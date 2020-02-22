@@ -41,11 +41,9 @@
         {{ assets.js()|raw }}
     {% endblock %}
     </head>
-    {# <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}"> #}
     <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
         <a id="skip-nav" class="skip-nav screen-reader-text" href="#maincontent">Skip to main content</a>
         {% include 'partials/svg.html.twig' ignore missing %}
-{#         <div class="page-wrapper"> #}
             {% block header %}
                 {% include 'partials/navigation.html.twig' with {'page': page.find('/footer', true)} %}
             {% endblock %}
@@ -62,8 +60,6 @@
             {% block footer %}
                 {% include 'partials/footer.html.twig' with {'page': page.find('/footer', true)} %}
             {% endblock %}
-
-{#         </div> #}
 
         {% block bottom %}
             {{ assets.js('bottom')|raw }}
