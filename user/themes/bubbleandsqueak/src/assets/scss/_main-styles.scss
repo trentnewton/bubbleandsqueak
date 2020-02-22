@@ -15,16 +15,10 @@ a {
 	color: $white;
 }
 
-a,
-input,
-select,
-textarea,
-button {
-
-	&:focus {
-		outline: none;
-	}
-
+:focus {
+	outline-color: #bfeaf2;
+	outline-style: solid;
+	outline-width: 3px;
 }
 
 h1,
@@ -64,6 +58,15 @@ fieldset {
 
 img {
 	transition: all $transition-time;
+}
+
+input,
+textarea,
+button {
+
+	&:focus {
+	outline: none;
+
 }
 
 .icon {

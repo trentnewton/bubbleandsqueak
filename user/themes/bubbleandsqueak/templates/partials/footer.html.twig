@@ -17,7 +17,7 @@
 						</li>
 					{% endif %}
 				</ul>
-				<div id="form-result"></div>
+				<div id="form-result" role="alert"></div>
 				{% include "forms/form.html.twig" with { form: forms('contact-form')|raw } %}
 			</div>
 			<div data-aos="fade-left" data-aos-delay="1000" class="second-column large-6 medium-6 cell">
@@ -86,18 +86,18 @@
 			</div>
 		</div>
 		<div class="grid-x copyright align-center-middle">
-			<div class="cell medium-12 large-10 copyright-text">
+			<nav class="cell medium-12 large-10 copyright-text" aria-label="Bottom Navigation">
 				<ul class="menu">
 					{% set currentYear = now|date("Y") %}
-					<li class="menu-text">&copy;{{ currentYear }} {{ site.title|e('html') }}.</li>
+					<li class="menu-text" role="none">&copy;{{ currentYear }} {{ site.title|e('html') }}.</li>
 					{% if page.header.privacy_policy_page %}
-						<li class="menu-text" itemprop="url"><a href="{{ base_url }}{{ page.header.privacy_policy_page }}" itemprop="name">Privacy</a></li>
+						<li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.header.privacy_policy_page }}" itemprop="name">Privacy</a></li>
 					{% endif %}
                     {% if page.header.terms_and_conditions_page %}
-                        <li class="menu-text" itemprop="url"><a href="{{ base_url }}{{ page.header.terms_and_conditions_page }}" itemprop="name">Terms</a></li>
+                        <li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.header.terms_and_conditions_page }}" itemprop="name">Terms</a></li>
                     {% endif %}
 				</ul>
-			</div>
+			</nav>
 			<div class="cell medium-12 large-2 copyright-logo">
 				<a href="{{ home_url }}">
 					<div class="screen-reader-text">{{ site.title|e('html') }}</div>

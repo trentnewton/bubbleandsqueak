@@ -1014,7 +1014,8 @@ a.special {
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background: $input-background;
 		}
 
