@@ -8,7 +8,7 @@
                 <article class="card">
                   {% set filename_ext = page.media[feature.graphic].filename|split('1x') %}
                   {% set imgcolor = GetImageColor(page.media[feature.graphic].path())[0] %}
-                  <div class="card-image"{#  style="background-color: #{{ imgcolor }}" #}>
+                  <div class="card-image" style="background-color: #{{ imgcolor }}">
                     {{ page.media[feature.graphic].sizes('(max-width:26em) 100vw, 50vw').width(page.media[feature.graphic].width).height(page.media[feature.graphic].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
                   </div>
                   <div class="card-section">
