@@ -10,7 +10,7 @@
                         <ul class="menu expanded card-icons">
                         {% for icon in page.header.payicon %}
                             <li data-aos="fade-up" data-aos-duration="500">
-                                <div class="screen-reader-text">{{ icon.title }}</div>
+                                <div class="show-for-sr">{{ icon.title }}</div>
                                 <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
                             </li>
                         {% endfor %}
@@ -32,7 +32,7 @@
                         <ul class="menu expanded card-icons">
                         {% for icon in page.header.payicon %}
                             <li data-aos="fade-up" data-aos-duration="500">
-                                <div class="screen-reader-text">{{ icon.title }}</div>
+                                <div class="show-for-sr">{{ icon.title }}</div>
                                 <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
                             </li>
                         {% endfor %}
