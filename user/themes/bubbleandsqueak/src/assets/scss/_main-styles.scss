@@ -83,14 +83,6 @@ button {
 	fill: currentColor;
 }
 
-.old-browser-notice {
-	text-align: center;
-	font-weight: $global-weight-bold;
-	padding-top: $paragraph-margin-bottom;
-	padding-bottom: $paragraph-margin-bottom;
-	background-color: $white;
-}
-
 .visual-hide {
 	position: absolute;
 	overflow: hidden;
@@ -118,30 +110,10 @@ button {
 
 // }
 
-// .off-canvas-wrapper {
-// 	-ms-overflow-style: none;
-// }
-
-// .off-canvas-content {
-// 	background: inherit;
-// }
-
-.disappear {
-	display: none;
-}
-
-.show {
-	opacity: 1;
-}
-
 .alert {
 	color: $alert-color;
 }
 
 .success {
 	color: $success-color;
-}
-
-.reveal {
-	outline: none;
 }
