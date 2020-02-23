@@ -638,6 +638,19 @@ a.special {
 
 		}
 
+		.image-right {
+
+			.lazy-placeholder {
+
+				@include breakpoint(small down) {
+					left: auto;
+					right: 0;
+				}
+
+			}
+
+		}
+
 		.lazy-placeholder {
 			position: absolute;
 			left: 0;
@@ -646,6 +659,13 @@ a.special {
 			width: 100%;
 			border-radius: 100%;
 			z-index: 0;
+
+			@include breakpoint(small down) {
+				width: 50%;
+				height: calc(100% - #{$paragraph-margin-bottom});
+			}
+
+
 		}
 
 	}
