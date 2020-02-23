@@ -148,7 +148,7 @@ jQuery( document ).ready( function ( $ ) {
         $(document).on("scroll", lazyload);
         $(window).on("resize", lazyload);
       }
-    })
+    });
 
 } );
 
