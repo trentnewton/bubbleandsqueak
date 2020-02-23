@@ -28,8 +28,6 @@
     {% endblock %}
 
     {% block javascripts %}
-        {% include 'partials/google-analytics.html.twig' with {'page': page.find('/footer', true)} %}
-        {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %}
         {# {% do assets.addJs('jquery', 101) %} #}
         {% do assets.addJs('theme://dist/assets/js/app.js', {group:'bottom'}) %}
     {% endblock %}
@@ -38,6 +36,8 @@
         {{ assets.css()|raw }}
         {{ assets.js()|raw }}
     {% endblock %}
+    {% include 'partials/google-analytics.html.twig' with {'page': page.find('/footer', true)} %}
+    {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %}
     </head>
     <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
         <a id="skip-nav" tabindex="1" class="skip-nav screen-reader-text" href="#maincontent">Skip to main content</a>
