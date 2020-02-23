@@ -20,7 +20,7 @@
                 {% set filename_ext = page.media.images|first.filename|split('1x') %}
                 {% set color = GetImageColor(page.media.images|first.path())[0] %}
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
-                    {{ page.media.images|first.derivatives(320).sizes('(max-width:26em) 100vw, 50vw').width(page.media[header.body_image].width).height(page.media[header.body_image].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
+                    {{ page.media.images|first.derivatives(1230).sizes('(max-width:26em) 100vw, 50vw').width(page.media[header.body_image].width).height(page.media[header.body_image].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
                     <div class="lazy-placeholder" style="background-color: #{{ color }}"></div>
                 </div>
             {% else %}
