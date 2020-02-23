@@ -1,8 +1,8 @@
-{% set image = page.media.images|first %}
+{# {% set image = page.media.images|first %} #}
 <section id="{{ page.header.title|hyphenize }}" class="wrapper spotlight">
     <div class="grid-container inner">
         <div class="grid-x grid-margin-x align-middle">
-            {% if image %}
+            {% if page.media.images %}
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-2 medium-order-1{% else %} small-order-2 medium-order-2{% endif %}">
                     <h2 data-aos="fade-{% if page.header.image_align == 'right' %}left{% else %}right{% endif %}" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
                     <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
@@ -17,10 +17,11 @@
                         </ul>
                     {% endif %}
                 </div>
-                {% set filename_ext = image.filename|split('1x') %}
-                {% set color = GetImageColor(image.path())[0] %}
+                {% set filename_ext = page.media.images|first.filename|split('1x') %}
+                {% set color = GetImageColor(page.media.images|first.path())[0] %}
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
-                    {{ image.sizes('(max-width:26em) 100vw, 50vw').width(image.width).height(image.height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
+                    {# {{ page.media[header.body_image].sizes('(max-width:26em) 100vw, 50vw').width(page.media[header.body_image].width).height(page.media[header.body_image].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }} #}
+                    {{ page.media.images|first.derivatives(320, 2000, 200).sizes('(max-width:26em) 100vw, 50vw').width(page.media[header.body_image].width).height(page.media[header.body_image].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
                     <div class="lazy-placeholder" style="background-color: #{{ color }}"></div>
                 </div>
             {% else %}
