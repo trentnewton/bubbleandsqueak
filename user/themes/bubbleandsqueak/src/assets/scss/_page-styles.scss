@@ -722,6 +722,19 @@ a.special {
 				margin: 0 0 $paragraph-margin-bottom;
 			}
 
+			&.spotlight {
+
+				.lazy-placeholder {
+
+					@include breakpoint(small down) {
+						left: 0;
+						right: auto;
+					}
+
+				}
+
+			}
+
 		}
 
 		&:nth-of-type(1) {
