@@ -11,6 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% include 'partials/metadata.html.twig' %}
+        {% if page.find('/footer').header.facebookappkey is defined and not empty %}<meta property="fb:app_id" content="{{ page.find('/footer').header.facebookappkey }}">{% endif %}
         <link rel="canonical" href="{{ page.url(true, true) }}" />
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url('theme://dist/assets/img/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url('theme://dist/assets/img/favicon-32x32.png') }}">
