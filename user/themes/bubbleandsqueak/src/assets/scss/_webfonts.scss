@@ -1,0 +1,47 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * houschka-rounded:
+ *   - http://typekit.com/eulas/00000000000000003b9b1baf
+ *   - http://typekit.com/eulas/00000000000000003b9b1bb7
+ *   - http://typekit.com/eulas/00000000000000003b9b1bb0
+ *   - http://typekit.com/eulas/00000000000000003b9b1bae
+ *
+ * © 2009-2020 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2020-02-24 06:48:40 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=zkx4ilo&ht=tk&f=36255.36256.36257.36258&a=765912&app=typekit&e=css");
+
+@font-face {
+	font-family:"houschka-rounded";
+	src:url("https://use.typekit.net/af/08ec8c/00000000000000003b9b1baf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/08ec8c/00000000000000003b9b1baf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/08ec8c/00000000000000003b9b1baf/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
+	font-style:normal;font-weight:500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family:"houschka-rounded";
+	src:url("https://use.typekit.net/af/c9951f/00000000000000003b9b1bb7/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/c9951f/00000000000000003b9b1bb7/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/c9951f/00000000000000003b9b1bb7/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+	font-style:normal;font-weight:700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family:"houschka-rounded";
+	src:url("https://use.typekit.net/af/2967e5/00000000000000003b9b1bb0/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),url("https://use.typekit.net/af/2967e5/00000000000000003b9b1bb0/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),url("https://use.typekit.net/af/2967e5/00000000000000003b9b1bb0/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");
+	font-style:italic;font-weight:500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family:"houschka-rounded";
+	src:url("https://use.typekit.net/af/e2950e/00000000000000003b9b1bae/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/e2950e/00000000000000003b9b1bae/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/e2950e/00000000000000003b9b1bae/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+	font-style:italic;font-weight:700;
+	font-display: swap;
+}
+
+.tk-houschka-rounded { font-family: "houschka-rounded",sans-serif; }
