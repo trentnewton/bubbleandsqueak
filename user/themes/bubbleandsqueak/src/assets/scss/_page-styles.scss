@@ -617,6 +617,19 @@ a.special {
 			direction: rtl;
 		}
 
+		&.spotlight {
+
+			.lazy-placeholder {
+
+				@include breakpoint(small down) {
+					left: auto;
+					right: 0;
+				}
+
+			}
+
+		}
+
 	}
 
 	&.spotlight {
@@ -634,19 +647,6 @@ a.special {
 			@include breakpoint(small down) {
 				max-width: 50%;
 				margin-bottom: $paragraph-margin-bottom;
-			}
-
-		}
-
-		.image-right {
-
-			.lazy-placeholder {
-
-				@include breakpoint(small down) {
-					left: auto;
-					right: 0;
-				}
-
 			}
 
 		}
@@ -768,6 +768,19 @@ a.special {
 
 			.features .card {
 				background: #006d81;
+			}
+
+		}
+
+		&.spotlight {
+
+			.lazy-placeholder {
+
+				@include breakpoint(small down) {
+					left: auto;
+					right: 0;
+				}
+
 			}
 
 		}
