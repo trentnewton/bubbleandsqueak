@@ -792,12 +792,14 @@ a.special {
 
 
 .features {
-	// justify-content: center;
 
 	.card-item {
 		display: flex;
 		align-items: stretch;
-		background-color: #bfeaf2;
+
+		.card-image {
+			background-color: #bfeaf2;
+		}
 
 		img {
 			border-radius: initial;
