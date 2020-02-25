@@ -6,7 +6,7 @@
           {% for feature in page.header.features %}
              <div data-aos="fade" class="card-item cell medium-6">
                 <article class="card">
-                  {% set filename_ext = page.media[feature.graphic].filename|split('.') %}
+                  {% set filename_ext = page.media[feature.graphic].filename|split('1x') %}
                   {# {% set imgcolor = GetImageColor(page.media[feature.graphic].path())[0] %} #}
                   <div class="card-image">
                     {{ page.media[feature.graphic].sizes('(max-width:26em) 100vw, 50vw').width(page.media[feature.graphic].width).height(page.media[feature.graphic].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
