@@ -9,8 +9,8 @@
                   {% set filename_ext = page.media[feature.graphic].filename|split('.') %}
                   {# {% set imgcolor = GetImageColor(page.media[feature.graphic].path())[0] %} #}
                   <div class="card-image">
-                    {# {{ page.media[feature.graphic].sizes('(max-width:26em) 100vw, 50vw').width(page.media[feature.graphic].width).height(page.media[feature.graphic].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }} #}
-                    <img data-src="{{ page.media[feature.graphic].url }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height}}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" class="lazy" title="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}">
+                    {{ page.media[feature.graphic].sizes('(max-width:26em) 100vw, 50vw').width(page.media[feature.graphic].width).height(page.media[feature.graphic].height).html(filename_ext[0]|humanize|replace({'-' : " "}), filename_ext[0]|humanize|replace({'-' : " "}), 'lazy') }}
+                    {# <img data-src="{{ page.media[feature.graphic].url }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height}}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" class="lazy" title="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}"> #}
                   </div>
                   <div class="card-section">
                     {% if feature.header %}
