@@ -8,7 +8,6 @@
     {% block head deferred %}
         <meta charset="utf-8" />
         <title>{% if page.header.googletitle is defined and not empty %}{{ page.header.googletitle }}{% else %}{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}{% endif %}</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% include 'partials/metadata.html.twig' %}
         {% if page.find('/footer').header.facebookappkey is defined and not empty %}<meta property="fb:app_id" content="{{ page.find('/footer').header.facebookappkey }}">{% endif %}
