@@ -44,6 +44,21 @@ form:
                 header.instagram.url:
                   type: text
                   label: Instagram Page URL
+            header.twitter:
+              type: fieldset
+              title: Twitter Account
+              help: Help text
+              info: Name of Twitter Account
+              text: URL & Icon for Twitter Account
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.twitter.icon:
+                  type: iconpicker
+                  label: Icon
+                header.twitter.name:
+                  type: text
+                  label: Twitter Account name
             header.location:
               type: fieldset
               title: Location Information
