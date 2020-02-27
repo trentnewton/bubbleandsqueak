@@ -1,5 +1,5 @@
 {% set background_image = page.header.background_image ? page.media[page.header.background_image] : page.media.images|first %}
-<footer class="footer" {% if background_image %} style="background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, .7)), to(rgba(0, 129, 153, .7))), url({{ background_image.url }}); background-image: linear-gradient(to top, rgba(0, 172, 204, .7), rgba(0, 129, 153, .7)), url({{ background_image.url }});"{% endif %} role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+<footer class="footer lazy" {% if background_image %} data-bg="linear-gradient(to top, rgba(0, 172, 204, .7), rgba(0, 129, 153, .7)), url({{ background_image.url }})"{% endif %} role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 	<div class="grid-container inner">
 		<h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
 		<div data-aos="fade" data-aos-delay="500">{{ page.content }}</div>

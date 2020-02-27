@@ -14,6 +14,7 @@
     "foundation-sites": "^6.6.1",
     "jquery": "^3.2.1",
     "motion-ui": "^2.0.3",
+    "vanilla-lazyload": "^12.5.0",
     "what-input": "^5.1.2",
     "widow-js": "^2.1.1"
   },
