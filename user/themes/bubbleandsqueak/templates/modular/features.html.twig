@@ -22,7 +22,7 @@
                     {% if feature.icon %}
                       <ul class="vertical menu">
                       {% for icon in feature.icon %}
-                        <li><svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>&nbsp;{{ icon.header }}</li>
+                        <li><svg class="icon icon-{{ icon.icon }}" role="img"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>&nbsp;{{ icon.header }}</li>
                       {% endfor %}
                       </ul>
                     {% endif %}

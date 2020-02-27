@@ -10,8 +10,10 @@
                         <ul class="menu expanded card-icons">
                         {% for icon in page.header.payicon %}
                             <li data-aos="fade-up" data-aos-duration="500">
-                                <div class="show-for-sr">{{ icon.title }}</div>
-                                <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
+                                <svg class="icon icon-{{ icon.icon }}" role="img" aria-labelledby="{{ icon.icon }}-title">
+                                    <title id="{{ icon.icon }}-title">{{ icon.title }}</title>
+                                    <use xlink:href="#icon-{{ icon.icon }}"></use>
+                                </svg>
                             </li>
                         {% endfor %}
                         </ul>
@@ -32,8 +34,10 @@
                         <ul class="menu expanded card-icons">
                         {% for icon in page.header.payicon %}
                             <li data-aos="fade-up" data-aos-duration="500">
-                                <div class="show-for-sr">{{ icon.title }}</div>
-                                <svg class="icon icon-{{ icon.icon }}"><use xlink:href="#icon-{{ icon.icon }}"></use></svg>
+                                <svg class="icon icon-{{ icon.icon }}" role="img" aria-labelledby="{{ icon.icon }}-title">
+                                    <title id="{{ icon.icon }}-title">{{ icon.title }}</title>
+                                    <use xlink:href="#icon-{{ icon.icon }}"></use>
+                                </svg>
                             </li>
                         {% endfor %}
                         </ul>

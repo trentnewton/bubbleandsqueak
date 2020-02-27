@@ -8,12 +8,12 @@
 				<ul class="menu social">
 					{% if page.header.facebook.url %}
 						<li itemprop="url">
-							<a href="{{ page.header.facebook.url }}" class="small button" title="Visit us on Facebook" target="_blank" rel="me" itemprop="name"><svg class="icon icon-{{ page.header.facebook.icon }}"><use xlink:href="#icon-{{ page.header.facebook.icon }}"></use></svg>&nbsp;Facebook</a>
+							<a href="{{ page.header.facebook.url }}" class="small button" title="Visit us on Facebook" target="_blank" rel="me" itemprop="name"><svg class="icon icon-{{ page.header.facebook.icon }}" role="img"><use xlink:href="#icon-{{ page.header.facebook.icon }}"></use></svg>&nbsp;Facebook</a>
 						</li>
 					{% endif %}
 					{% if page.header.instagram.url %}
 						<li itemprop="url">
-							<a href="{{ page.header.instagram.url }}" class="small button" title="Follow us on Instagram" target="_blank" rel="me" itemprop="name"><svg class="icon icon-{{ page.header.instagram.icon }}"><use xlink:href="#icon-{{ page.header.instagram.icon }}"></use></svg>&nbsp;Instagram</a>
+							<a href="{{ page.header.instagram.url }}" class="small button" title="Follow us on Instagram" target="_blank" rel="me" itemprop="name"><svg class="icon icon-{{ page.header.instagram.icon }}"><use xlink:href="#icon-{{ page.header.instagram.icon }}" role="img"></use></svg>&nbsp;Instagram</a>
 						</li>
 					{% endif %}
 				</ul>
@@ -23,7 +23,7 @@
 			<div data-aos="fade-left" data-aos-delay="1000" class="second-column large-6 medium-6 cell">
 				<div class="flex-container info">
 					<div class="info-icon">
-						<svg class="icon icon-apartment-building"><use xlink:href="#icon-apartment-building"></use></svg>
+						<svg class="icon icon-apartment-building" role="img"><use xlink:href="#icon-apartment-building"></use></svg>
 					</div>
 					<div>
 						<span class="info-title">Location</span><br>
@@ -48,7 +48,7 @@
 					{% if page.header.opening_hours.daystart %}
 						<div class="flex-container info">
 							<div class="info-icon">
-								<svg class="icon icon-clock"><use xlink:href="#icon-clock"></use></svg>
+								<svg class="icon icon-clock" role="img"><use xlink:href="#icon-clock"></use></svg>
 							</div>
 							<div>
 								<span class="info-title">Opening Hours</span><br>
@@ -68,7 +68,7 @@
 					{% if page.header.location.number %}
 						<div class="flex-container info">
 							<div class="info-icon">
-								<svg class="icon icon-call"><use xlink:href="#icon-call"></use></svg>
+								<svg class="icon icon-call" role="img"><use xlink:href="#icon-call"></use></svg>
 							</div>
 							<div>
 								<span class="info-title">Call</span><br>
@@ -100,8 +100,10 @@
 			</nav>
 			<div class="cell medium-12 large-2 copyright-logo">
 				<a href="{{ home_url }}">
-					<div class="show-for-sr">{{ site.title|e('html') }}</div>
-					<svg class="icon-logo-mono"><use xlink:href="#icon-logo-mono"></use></svg>
+                    <svg class="icon-logo-mono" role="img" aria-labelledby="icon-logo-mono-title">
+                        <title id="icon-logo-mono-title">{{ site.title|e('html') }}</title>
+                        <use xlink:href="#icon-logo-mono"></use>
+                    </svg>
 				</a>
 			</div>
 		</div>
