@@ -14,7 +14,11 @@
     {% else %}
       <li class="{{ active_page }}" role="menuitem" itemprop="url">
         <a href="{{ p.url }}">
-          <i class="fi-list"><svg class="icon icon-{{ p.header.icon }}"><use xlink:href="#icon-{{ p.header.icon }}"></use></svg></i>
+          <i class="fi-list">
+            <svg class="icon icon-{{ p.header.icon }}" role="img">
+              <use xlink:href="#icon-{{ p.header.icon }}"></use>
+            </svg>
+          </i>
           <span>{{ p.menu }}</span>
         </a>
       </li>
