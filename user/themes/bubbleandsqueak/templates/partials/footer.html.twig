@@ -87,7 +87,7 @@
 		</div>
 		<div class="grid-x copyright align-center-middle">
 			<nav class="cell medium-12 large-10 copyright-text" aria-label="Bottom Navigation">
-				<ul class="menu">
+				<ul role="menu" class="menu">
 					{% set currentYear = now|date("Y") %}
 					<li class="menu-text" role="none">&copy;{{ currentYear }} {{ site.title|e('html') }}.</li>
 					{% if page.header.privacy_policy_page %}

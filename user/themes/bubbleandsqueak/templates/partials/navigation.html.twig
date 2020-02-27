@@ -4,7 +4,7 @@
     <div class="top-bar stacked-for-medium">
         <div class="top-bar-left">
             <div class="logo">
-                <a href="{{ home_url }}">
+                <a title="Visit our Home Page" href="{{ home_url }}">
                     <div class="show-for-sr">{{ site.title|e('html') }}</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="186px" height="65px" viewBox="0 0 262.75 91.82">
                         <style type="text/css">
@@ -104,7 +104,7 @@
                     </svg>
                 </a>
             </div>
-            <ul class="menu icons icon-top"{{ tree ? ' class="tree"' : '' }}>
+            <ul role="menu" class="menu icons icon-top"{{ tree ? ' class="tree"' : '' }}>
 			    {{ macros.nav_loop(pages) }}
 			</ul>
         </div>
