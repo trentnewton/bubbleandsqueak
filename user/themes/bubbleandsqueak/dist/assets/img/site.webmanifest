@@ -1,6 +1,7 @@
 {
     "name": "Bubble & Squeak Prestige Laundromat",
     "short_name": "Bubble & Squeak",
+    "start_url": "/",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
