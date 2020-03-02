@@ -1,6 +1,6 @@
 <section id="{{ page.header.title|hyphenize }}" class="wrapper features-section">
     <div class="grid-container inner">
-      <h2 data-aos="fade" class="major bubbles">{{ page.header.title }}</h2>
+      <h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
         <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
         <section class="features grid-x grid-margin-x">
           {% for feature in page.header.features %}
@@ -14,7 +14,7 @@
                   </div>
                   <div class="card-section">
                     {% if feature.header %}
-                      <h3 class="major">{{ feature.header }}</h3>
+                      <h3 class="major" itemprop="headline">{{ feature.header }}</h3>
                     {% endif %}
                     {% if feature.text %}
                       {{ feature.text|markdown }}
