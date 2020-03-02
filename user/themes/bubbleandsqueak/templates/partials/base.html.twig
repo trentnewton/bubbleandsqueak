@@ -34,6 +34,7 @@
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link rel="preconnect" href="https://maps.gstatic.com">
             <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://maps.googleapis.com">
         {% endif %}
         {% if page.find('/footer').header.facebookappkey is defined and not empty %}
             <link rel="preconnect" href="https://www.facebook.com">
@@ -41,6 +42,7 @@
         {% endif %}
         {% if page.find('/footer').header.googleanalytics is defined and not empty %}
             <link rel="preconnect" href="https://www.google-analytics.com">
+            <link rel="preconnect" href="https://www.googletagmanager.com">
         {% endif %}
     {% endblock head %}
 
