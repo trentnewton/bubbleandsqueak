@@ -10,17 +10,38 @@
         <title>{% if page.header.googletitle is defined and not empty %}{{ page.header.googletitle }}{% else %}{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}{% endif %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% include 'partials/metadata.html.twig' %}
-        {% if page.find('/footer').header.facebookappkey is defined and not empty %}<meta property="fb:app_id" content="{{ page.find('/footer').header.facebookappkey }}">{% endif %}
-        {% if page.find('/footer').header.twitter.name is defined and not empty %}<meta name="twitter:site" content="@{{ page.find('/footer').header.twitter.name }}" />{% endif %}
+        {% if page.find('/footer').header.facebookappkey is defined and not empty %}
+            <meta property="fb:app_id" content="{{ page.find('/footer').header.facebookappkey }}">
+        {% endif %}
+        {% if page.find('/footer').header.twitter.name is defined and not empty %}
+            <meta name="twitter:site" content="@{{ page.find('/footer').header.twitter.name }}" />
+        {% endif %}
         <link rel="canonical" href="{{ page.url(true, true) }}" />
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url('theme://dist/assets/img/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url('theme://dist/assets/img/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url('theme://dist/assets/img/favicon-16x16.png') }}">
         <link rel="manifest" href="{{ url('theme://dist/assets/img/site.webmanifest') }}">
         <link rel="mask-icon" href="{{ url('theme://dist/assets/img/safari-pinned-tab.svg') }}" color="#5bbad5">
-        <meta name="geo.position" content="{{ page.find('/footer').header.googlemaps.latitude }}; {{ page.find('/footer').header.googlemaps.longitude }}">
+        {% if page.find('/footer').header.googlemaps.latitude is defined and not empty %}
+            <meta name="geo.position" content="{{ page.find('/footer').header.googlemaps.latitude }}; {{ page.find('/footer').header.googlemaps.longitude }}">
+        {% endif %}
         <meta name="geo.placename" content="{{ site.title|e('html') }}">
-        <meta name="geo.region" content="AU-QLD">
+        {% if page.find('/footer').header.location.state is defined and not empty %}
+            <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
+        {% endif %}
+        <link rel="preconnect" href="https://use.typekit.net">
+        {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="preconnect" href="https://maps.gstatic.com">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+        {% endif %}
+        {% if page.find('/footer').header.facebookappkey is defined and not empty %}
+            <link rel="preconnect" href="https://www.facebook.com">
+            <link rel="preconnect" href="https://connect.facebook.net">
+        {% endif %}
+        {% if page.find('/footer').header.googleanalytics is defined and not empty %}
+            <link rel="preconnect" href="https://www.google-analytics.com">
+        {% endif %}
     {% endblock head %}
 
     {% block stylesheets %}
@@ -44,7 +65,7 @@
     {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %}
     </head>
     <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
-        <a id="skip-nav" tabindex="1" class="show-on-focus" href="#maincontent">Skip to main content</a>
+        <a id="skip-nav" tabindex="0" class="show-on-focus" href="#maincontent">Skip to main content</a>
         {% include 'partials/svg.html.twig' ignore missing %}
         {% block notice %}
             {% include 'partials/notice.html.twig' with {'page': page.find('/notice', true)} %}
