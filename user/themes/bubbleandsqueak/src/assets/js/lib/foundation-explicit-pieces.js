@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import { Foundation } from 'foundation-sites/js/foundation.core';
-import * as CoreUtils from 'foundation-sites/js/foundation.core.utils';
+// import * as CoreUtils from 'foundation-sites/js/foundation.core.utils';
 // import { Box } from 'foundation-sites/js/foundation.util.box'
 // import { onImagesLoaded } from 'foundation-sites/js/foundation.util.imageLoader';
 // import { Keyboard } from 'foundation-sites/js/foundation.util.keyboard';
@@ -37,11 +37,11 @@ Foundation.addToJquery($);
 
 // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
-Foundation.rtl = CoreUtils.rtl;
-Foundation.GetYoDigits = CoreUtils.GetYoDigits;
-Foundation.transitionend = CoreUtils.transitionend;
-Foundation.RegExpEscape = CoreUtils.RegExpEscape;
-Foundation.onLoad = CoreUtils.onLoad;
+// Foundation.rtl = CoreUtils.rtl;
+// Foundation.GetYoDigits = CoreUtils.GetYoDigits;
+// Foundation.transitionend = CoreUtils.transitionend;
+// Foundation.RegExpEscape = CoreUtils.RegExpEscape;
+// Foundation.onLoad = CoreUtils.onLoad;
 
 // Foundation.Box = Box;
 // Foundation.onImagesLoaded = onImagesLoaded;
