@@ -45,16 +45,16 @@ svg {
 	vertical-align: middle;
 }
 
-figure {
-	@extend figure;
-	margin: 0;
-}
+// figure {
+// 	@extend figure;
+// 	margin: 0;
+// }
 
-fieldset {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+// fieldset {
+// 	margin: 0;
+// 	padding: 0;
+// 	border: 0;
+// }
 
 img {
 	transition: all $transition-time;

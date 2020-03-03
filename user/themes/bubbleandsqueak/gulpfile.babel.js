@@ -14,6 +14,10 @@ import webpack2      from 'webpack';
 import named         from 'vinyl-named';
 import uncss         from 'uncss';
 import autoprefixer  from 'autoprefixer';
+import mergeRules    from 'postcss-merge-rules';
+import uniqueSelectors from 'postcss-unique-selectors';
+import minifySelectors from 'postcss-minify-selectors';
+import discardDuplicates from 'postcss-discard-duplicates';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -85,6 +89,10 @@ function sass() {
   const postCssPlugins = [
     // Autoprefixer
     autoprefixer(),
+    mergeRules(),
+    uniqueSelectors(),
+    minifySelectors(),
+    discardDuplicates(),
 
     // UnCSS - Uncomment to remove unused styles in production
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
