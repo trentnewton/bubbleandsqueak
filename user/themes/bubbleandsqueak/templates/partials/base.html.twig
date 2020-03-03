@@ -56,6 +56,7 @@
 
     {% block javascripts %}
         {# {% do assets.addJs('jquery', 101) %} #}
+        {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' }) %}
         {% do assets.addJs('theme://dist/assets/js/app.js', {group:'bottom'}) %}
     {% endblock %}
 

@@ -1,4 +1,4 @@
-import IntersectionObserver from 'intersection-observer';
+// import IntersectionObserver from 'intersection-observer';
 import AOS from 'aos';
 import Widow from 'widow-js';
 import LazyLoad from 'vanilla-lazyload';

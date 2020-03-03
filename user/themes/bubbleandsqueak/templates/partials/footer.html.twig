@@ -589,14 +589,14 @@
                 map: map,
                 icon: icon
             });
-            map.markers.push(marker);
+            {# map.markers.push(marker);
             var infowindow = new google.maps.InfoWindow({
                 content: markerElement.innerHTML
             });
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.open(map, marker);
             });
-            markerElement.style.opacity = 1;
+            markerElement.style.opacity = 1; #}
             // listen for the window resize event & trigger Google Maps to update too
             window.onresize = function() {
                 var currCenter = map.getCenter();
