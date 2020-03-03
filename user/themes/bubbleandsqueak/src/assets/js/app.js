@@ -1,5 +1,5 @@
+import IntersectionObserver from 'intersection-observer';
 import AOS from 'aos';
-// import widowtamer from 'widowtamer-npm';
 import Widow from 'widow-js';
 import LazyLoad from 'vanilla-lazyload';
 import $ from 'jquery';

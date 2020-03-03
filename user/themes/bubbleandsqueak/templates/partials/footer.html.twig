@@ -137,6 +137,8 @@
 
             insertBefore.call( head, newElement, referenceElement );
         };
+    </script>
+    {#<script>
 
         function initMap() {
 
@@ -365,5 +367,274 @@
             };
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ page.header.googlemaps.key }}&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ page.header.googlemaps.key }}&callback=initMap"></script>#}
+    <script>
+
+        function google_maps_init() {
+            'use strict'
+
+            var bubbleandsqueak = {lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }}}
+            var markerElement = document.getElementById('marker')
+            var mapElement = document.getElementById('map')
+            var map = new google.maps.Map(mapElement, {
+                zoom: {{ page.header.googlemaps.zoom }},
+                center: bubbleandsqueak,
+                styles:
+                    [
+                    {
+                        "featureType": "water",
+                        "stylers": [
+                            {
+                                "color": "#40c1d9"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#f5f6f6"
+                            },
+                            {
+                                "weight": 6
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#008199"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#bfeaf2"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#7fd5e5"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.icon"
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            },
+                            {
+                                "color": "#bfdbdd"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "lightness": -100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "hue": "#40939b"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "hue": "#006f79"
+                            },
+                            {
+                                "saturation": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#7fb7bc"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#00accc"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#bfdbdd"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    }
+                    ]
+            });
+            var icon = {
+                url: '{{ theme_url }}/dist/assets/img/location-pin.svg',
+                anchor: new google.maps.Point(69,118),
+                scaledSize: new google.maps.Size(140,140)
+            };
+            var marker = new google.maps.Marker({
+                position: bubbleandsqueak,
+                map: map,
+                icon: icon
+            });
+            map.markers.push(marker);
+            var infowindow = new google.maps.InfoWindow({
+                content: markerElement.innerHTML
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
+            markerElement.style.opacity = 1;
+            // listen for the window resize event & trigger Google Maps to update too
+            window.onresize = function() {
+                var currCenter = map.getCenter();
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter(currCenter);
+            };
+        };
+
+        function google_maps_lazyload(api_key) {
+            'use strict'
+
+            if (api_key) {
+                var options = {
+                    rootMargin: '100px',
+                    threshold: 0
+                };
+
+                var map = document.getElementById('map');
+
+                var observer = new IntersectionObserver(
+                    function(entries, self) {
+                        // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
+                        var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
+                        if (isIntersecting) {
+                            var mapsJS = document.createElement('script')
+                            mapsJS.src = 'https://maps.googleapis.com/maps/api/js?callback=google_maps_init&key=' + api_key
+                            document.getElementsByTagName('head')[0].appendChild(mapsJS)
+                            self.unobserve(map)
+                        }
+                    },
+                    options
+                );
+
+                observer.observe(map);
+            };
+        };
+
+        google_maps_lazyload('{{ page.header.googlemaps.key }}');
+    </script>
+
 {% endif %}
