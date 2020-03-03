@@ -18,6 +18,7 @@ import mergeRules    from 'postcss-merge-rules';
 import uniqueSelectors from 'postcss-unique-selectors';
 import minifySelectors from 'postcss-minify-selectors';
 import discardDuplicates from 'postcss-discard-duplicates';
+import svgo          from 'postcss-svgo';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -93,6 +94,7 @@ function sass() {
     uniqueSelectors(),
     minifySelectors(),
     discardDuplicates(),
+    svgo(),
 
     // UnCSS - Uncomment to remove unused styles in production
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
