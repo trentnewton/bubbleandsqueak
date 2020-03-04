@@ -21,9 +21,6 @@ jQuery( document ).ready( function ( $ ) {
 
   $( document ).foundation();
 
-  // var sendIcon = '<svg class="icon icon-paper-airplane"><use xlink:href="#icon-paper-airplane"></use></svg>&nbsp;';
-  // $('form .button').prepend(sendIcon);
-
   var form = $('#contact-form');
   form.submit(function(e) {
     // prevent form submission
