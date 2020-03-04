@@ -20,11 +20,11 @@
                     {% endif %}
                 </div>
                 {% set filename_ext = page.media.images|first.filename|split('1x') %}
-                {# {% set color = GetImageColor(page.media.images|first.path())[0] %} #}
+                {% set colour = GetImageColor(page.media.images|first.path())[0] %}
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} image-right small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
                     {% set text_image = page.media.images|first.derivatives(1230).sizes('(max-width:26em) 100vw, 50vw') %}
-                    <img class="lazy" data-src="{{ text_image.url(false) }}" data-srcset="{{ text_image.srcset(false) }}" width="{{ page.media.images|first.width }}" height="{{ page.media.images|first.height }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}">
-                    <div class="lazy-placeholder"></div>
+                    <img class="lazy" style="background: #{{ colour }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ text_image.url(false) }}" data-srcset="{{ text_image.srcset(false) }}" width="{{ page.media.images|first.width }}" height="{{ page.media.images|first.height }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}">
+                    {# <div class="lazy-placeholder"></div> #}
                 </div>
             {% else %}
                 <div class="cell small-12">

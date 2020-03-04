@@ -634,15 +634,13 @@ a.special {
 
 	&.spotlight {
 
-		.image-area {
-			position: relative;
-		}
+		// .image-area {
+		// 	position: relative;
+		// }
 
 		img {
 			border-radius: 100%;
-			position: relative;
 			box-shadow: 0 0 10px rgba($black, 0.23);
-			z-index: 1;
 
 			@include breakpoint(small down) {
 				max-width: 50%;
@@ -651,23 +649,23 @@ a.special {
 
 		}
 
-		.lazy-placeholder {
-			position: absolute;
-			left: 0;
-			top: 0;
-			height: 100%;
-			width: 100%;
-			border-radius: 100%;
-			z-index: 0;
-			background-color: #bfeaf2;
+		// .lazy-placeholder {
+		// 	position: absolute;
+		// 	left: 0;
+		// 	top: 0;
+		// 	height: 100%;
+		// 	width: 100%;
+		// 	border-radius: 100%;
+		// 	z-index: 0;
+		// 	background-color: #bfeaf2;
 
-			@include breakpoint(small down) {
-				width: 50%;
-				height: calc(100% - #{$paragraph-margin-bottom});
-			}
+		// 	@include breakpoint(small down) {
+		// 		width: 50%;
+		// 		height: calc(100% - #{$paragraph-margin-bottom});
+		// 	}
 
 
-		}
+		// }
 
 	}
 
@@ -810,9 +808,9 @@ a.special {
 		display: flex;
 		align-items: stretch;
 
-		.card-image {
-			background-color: #bfeaf2;
-		}
+		// .card-image {
+		// 	background-color: #bfeaf2;
+		// }
 
 		img {
 			border-radius: initial;
