@@ -1,18 +1,49 @@
 // Generate Duration && Delay
-[data-aos] {
-  @for $i from 1 through 60 {
-    body[data-aos-duration='#{$i * 50}'] &,
-    &[data-aos][data-aos-duration='#{$i * 50}'] {
-      transition-duration: #{$i * 50}ms;
+// [data-aos] {
+//   @for $i from 1 through 20 {
+//     body[data-aos-duration='#{$i * 50}'] &,
+//     &[data-aos][data-aos-duration='#{$i * 50}'] {
+//       transition-duration: #{$i * 50}ms;
+//     }
+
+//     body[data-aos-delay='#{$i * 50}'] &,
+//     &[data-aos][data-aos-delay='#{$i * 50}'] {
+//       transition-delay: 0;
+
+//       &.aos-animate {
+//         transition-delay: #{$i * 50}ms;
+//       }
+//     }
+//   }
+// }
+
+
+[data-aos][data-aos][data-aos-duration='500'],
+body[data-aos-duration='500'] [data-aos] {
+    transition-duration: .5s
+}
+
+[data-aos][data-aos][data-aos-delay='500'],
+body[data-aos-delay='500'] [data-aos] {
+    transition-delay: 0;
+
+    &.aos-animate {
+      transition-delay: .5s
     }
 
-    body[data-aos-delay='#{$i * 50}'] &,
-    &[data-aos][data-aos-delay='#{$i * 50}'] {
-      transition-delay: 0;
+}
 
-      &.aos-animate {
-        transition-delay: #{$i * 50}ms;
-      }
+[data-aos][data-aos][data-aos-duration='1000'],
+body[data-aos-duration='1000'] [data-aos] {
+    transition-duration: 1s
+}
+
+[data-aos][data-aos][data-aos-delay='1000'],
+body[data-aos-delay='1000'] [data-aos] {
+    transition-delay: 0;
+
+    &.aos-animate {
+      transition-delay: 1s
     }
-  }
+
 }
