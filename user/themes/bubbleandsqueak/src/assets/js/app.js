@@ -19,70 +19,70 @@ import './lib/foundation-explicit-pieces';
 
 jQuery( document ).ready( function ( $ ) {
 
-    $( document ).foundation();
+  $( document ).foundation();
 
-    var sendIcon = '<svg class="icon icon-paper-airplane"><use xlink:href="#icon-paper-airplane"></use></svg>&nbsp;';
-    $('form .button').prepend(sendIcon);
+  var sendIcon = '<svg class="icon icon-paper-airplane"><use xlink:href="#icon-paper-airplane"></use></svg>&nbsp;';
+  $('form .button').prepend(sendIcon);
 
-    var form = $('#contact-form');
-    form.submit(function(e) {
-        // prevent form submission
-        e.preventDefault();
+  var form = $('#contact-form');
+  form.submit(function(e) {
+    // prevent form submission
+    e.preventDefault();
 
-        // submit the form via Ajax
-        $.ajax({
-            url: form.attr('action'),
-            type: form.attr('method'),
-            dataType: 'html',
-            data: form.serialize(),
-            success: function(result) {
-                // Inject the result in the HTML
-                $('#form-result').html(result);
-                $('#contact-form')[0].reset();
-            }
-        });
-
+    // submit the form via Ajax
+    $.ajax({
+      url: form.attr('action'),
+      type: form.attr('method'),
+      dataType: 'html',
+      data: form.serialize(),
+      success: function(result) {
+        // Inject the result in the HTML
+        $('#form-result').html(result);
+        $('#contact-form')[0].reset();
+      }
     });
 
-    function initparticles() {
-        bubbles();
-    }
+  });
 
-    function bubbles() {
+  function initparticles() {
+    bubbles();
+  }
 
-        $.each($('.major.bubbles'), function() {
-            var bubblecount = ($(this).width() / 50) * 10;
-            for (var i = 0; i <= bubblecount; i++) {
-                var size = $.rnd(40, 80) / 10;
-                $(this).append(
-                    '<span class="particle" style="top:' +
-                    $.rnd(20, 80) +
-                    "%; left:" +
-                    $.rnd(0, 95) +
-                    "%;width:" +
-                    size +
-                    "px; height:" +
-                    size +
-                    "px;animation-delay: " +
-                    $.rnd(0, 30) / 10 +
-                    's;"></span>'
-                );
-            }
-        });
+  function bubbles() {
 
-        $.each($('.major.bubbles.aos-animate'), function() {
-            $(this).find('.particle').addClass('tree');
-        });
+    $.each($('.major.bubbles'), function() {
+      var bubblecount = ($(this).width() / 50) * 10;
+      for (var i = 0; i <= bubblecount; i++) {
+        var size = $.rnd(40, 80) / 10;
+        $(this).append(
+          '<span class="particle" style="top:' +
+          $.rnd(20, 80) +
+          "%; left:" +
+          $.rnd(0, 95) +
+          "%;width:" +
+          size +
+          "px; height:" +
+          size +
+          "px;animation-delay: " +
+          $.rnd(0, 30) / 10 +
+          's;"></span>'
+        );
+      }
+    });
 
-    }
+    $.each($('.major.bubbles.aos-animate'), function() {
+      $(this).find('.particle').addClass('tree');
+    });
 
-    jQuery.rnd = function(m, n) {
-        m = parseInt(m);
-        n = parseInt(n);
-        return Math.floor(Math.random() * (n - m + 1)) + m;
-    };
+  }
 
-    initparticles();
+  jQuery.rnd = function(m, n) {
+    m = parseInt(m);
+    n = parseInt(n);
+    return Math.floor(Math.random() * (n - m + 1)) + m;
+  };
+
+  initparticles();
 
 } );
 
@@ -113,8 +113,8 @@ const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
 // const prices = widow.removeWidowedElements('.prices');
 
 var lazyLoadInstance = new LazyLoad({
-    elements_selector: ".lazy"
-    // ... more custom settings?
+  elements_selector: ".lazy",
+  load_delay: 300
 });
 
 lazyLoadInstance.update();
