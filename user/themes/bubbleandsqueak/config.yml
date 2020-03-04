@@ -27,3 +27,4 @@ PATHS:
   entries:
     - "src/assets/js/app.js"
     - "src/assets/js/intersection-observer.js"
+    - "src/assets/js/lazyload.min.js"

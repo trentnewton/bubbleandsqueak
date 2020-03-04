@@ -1,7 +1,7 @@
 // import IntersectionObserver from 'intersection-observer';
 import AOS from 'aos';
 import Widow from 'widow-js';
-import LazyLoad from 'vanilla-lazyload';
+// import LazyLoad from 'vanilla-lazyload';
 import $ from 'jquery';
 // import 'what-input';
 
@@ -112,9 +112,9 @@ const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: fa
 const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
 // const prices = widow.removeWidowedElements('.prices');
 
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy",
-  load_delay: 300
-});
+// var lazyLoadInstance = new LazyLoad({
+//   elements_selector: ".lazy",
+//   load_delay: 300
+// });
 
-lazyLoadInstance.update();
+// lazyLoadInstance.update();
