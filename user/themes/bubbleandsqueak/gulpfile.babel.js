@@ -19,6 +19,10 @@ import uniqueSelectors from 'postcss-unique-selectors';
 import minifySelectors from 'postcss-minify-selectors';
 import discardDuplicates from 'postcss-discard-duplicates';
 import svgo          from 'postcss-svgo';
+import minifyGradients from 'postcss-minify-gradients';
+import discardComments from 'postcss-discard-comments';
+import discardOverridden from 'postcss-discard-overridden';
+import reduceInitial  from 'postcss-reduce-initial';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -95,6 +99,10 @@ function sass() {
     minifySelectors(),
     discardDuplicates(),
     svgo(),
+    minifyGradients(),
+    discardComments(),
+    discardOverridden(),
+    reduceInitial(),
 
     // UnCSS - Uncomment to remove unused styles in production
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
