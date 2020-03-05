@@ -21,6 +21,8 @@ import Widow from 'widow-js';
 
 document.addEventListener('DOMContentLoaded', function(){
 
+  "use strict";
+
   document.getElementById('contact-form').addEventListener("submit", function(e){
     e.preventDefault()
     var form = e.target
@@ -48,19 +50,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function bubbles() {
 
-    const bubblesClass = document.querySelectorAll('.major.bubbles');
+    var bubblesClass = document.querySelectorAll('.major.bubbles');
 
-    const rnd = function(m, n) {
+    var rnd = function(m, n) {
       m = parseInt(m);
       n = parseInt(n);
       return Math.floor(Math.random() * (n - m + 1)) + m;
     };
 
-    const size = rnd(40, 80) / 10;
+    var size = rnd(40, 80) / 10;
 
-    bubblesClass.forEach((element) => { // Add item to closure
-      const bubbleCount = (parseFloat(getComputedStyle(element, null).width.replace('px', '')) / 50) * 10;
-      for (let i = 0; i <= bubbleCount; i++) {
+    bubblesClass.forEach(function (element) { // Add item to closure
+      var bubbleCount = (parseFloat(getComputedStyle(element, null).width.replace('px', '')) / 50) * 10;
+      for (var i = 0; i <= bubbleCount; i++) {
         element.insertAdjacentHTML('beforeend',
           '<span class="particle" style="top:' +
           rnd(20, 80) +
