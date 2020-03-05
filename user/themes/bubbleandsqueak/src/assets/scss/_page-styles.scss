@@ -641,6 +641,7 @@ a.special {
 		img {
 			border-radius: 100%;
 			box-shadow: 0 0 10px rgba($black, 0.23);
+			background-color: #bfeaf2;
 
 			@include breakpoint(small down) {
 				max-width: 50%;
@@ -808,9 +809,9 @@ a.special {
 		display: flex;
 		align-items: stretch;
 
-		// .card-image {
-		// 	background-color: #bfeaf2;
-		// }
+		.card-image {
+			background-color: #bfeaf2;
+		}
 
 		img {
 			border-radius: initial;
