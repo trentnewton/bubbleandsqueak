@@ -7,8 +7,8 @@
              <div data-aos="fade" class="card-item cell medium-6">
                 <article class="card">
                   {% set filename_ext = page.media[feature.graphic].filename|split('1x') %}
-                  {% set imgcolour = GetImageColor(page.media[feature.graphic].path())[0] %}
-                  <div class="card-image" style="background: #{{ imgcolour }}">
+                  {# {% set imgcolour = GetImageColor(page.media[feature.graphic].path())[0] %} #}
+                  <div class="card-image"{#  style="background: #{{ imgcolour }}" #}>
                     {% set feature_image = page.media[feature.graphic].derivatives(1230).sizes('(max-width:26em) 100vw, 50vw') %}
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ feature_image.url(false) }}" data-srcset="{{ feature_image.srcset(false) }}" width="{{ page.media[feature.graphic].width }}" height="{{ page.media[feature.graphic].height}}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}" class="lazy">
                   </div>
