@@ -2,7 +2,7 @@
 import AOS from 'aos';
 import Widow from 'widow-js';
 // import LazyLoad from 'vanilla-lazyload';
-import $ from 'jquery';
+// import $ from 'jquery';
 // import 'what-input';
 
 // Foundation JS relies on a global variable. In ES6, all imports are hoisted
@@ -10,78 +10,77 @@ import $ from 'jquery';
 // it would execute earlier than we have assigned the global variable.
 // This is why we have to use CommonJS require() here since it doesn't
 // have the hoisting behavior.
-window.jQuery = $;
+// window.jQuery = $;
 // require('foundation-sites');
 
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
-import './lib/foundation-explicit-pieces';
+// import './lib/foundation-explicit-pieces';
 
-jQuery( document ).ready( function ( $ ) {
+// $( document ).foundation();
 
-  $( document ).foundation();
+document.addEventListener('DOMContentLoaded', function(){
 
-  var form = $('#contact-form');
-  form.submit(function(e) {
-    // prevent form submission
-    e.preventDefault();
+  document.getElementById('contact-form').addEventListener("submit", function(e){
+    e.preventDefault()
+    var form = e.target
+    var data = new FormData(form)
 
-    // submit the form via Ajax
-    $.ajax({
-      url: form.attr('action'),
-      type: form.attr('method'),
-      dataType: 'html',
-      data: form.serialize(),
-      success: function(result) {
-        // Inject the result in the HTML
-        $('#form-result').html(result);
-        $('#contact-form')[0].reset();
+    var request = new XMLHttpRequest()
+
+    request.onreadystatechange = function(){
+
+      if (request.status >= 200 && request.status < 400) {
+        // Success!
+        var resp = request.responseText;
+        document.getElementById('form-result').innerHTML = resp;
+        form.reset();
+      } else {
+        // We reached our target server, but it returned an error
+        // TODO
       }
-    });
 
+    }
+
+    request.open(form.method, form.action)
+    request.send(data)
   });
-
-  function initparticles() {
-    bubbles();
-  }
 
   function bubbles() {
 
-    $.each($('.major.bubbles'), function() {
-      var bubblecount = ($(this).width() / 50) * 10;
-      for (var i = 0; i <= bubblecount; i++) {
-        var size = $.rnd(40, 80) / 10;
-        $(this).append(
+    const bubblesClass = document.querySelectorAll('.major.bubbles');
+
+    const rnd = function(m, n) {
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor(Math.random() * (n - m + 1)) + m;
+    };
+
+    const size = rnd(40, 80) / 10;
+
+    bubblesClass.forEach((element) => { // Add item to closure
+      const bubbleCount = (parseFloat(getComputedStyle(element, null).width.replace('px', '')) / 50) * 10;
+      for (let i = 0; i <= bubbleCount; i++) {
+        element.insertAdjacentHTML('beforeend',
           '<span class="particle" style="top:' +
-          $.rnd(20, 80) +
+          rnd(20, 80) +
           "%; left:" +
-          $.rnd(0, 95) +
+          rnd(0, 95) +
           "%;width:" +
           size +
           "px; height:" +
           size +
           "px;animation-delay: " +
-          $.rnd(0, 30) / 10 +
+          rnd(0, 30) / 10 +
           's;"></span>'
         );
       }
     });
-
-    $.each($('.major.bubbles.aos-animate'), function() {
-      $(this).find('.particle').addClass('tree');
-    });
-
   }
 
-  jQuery.rnd = function(m, n) {
-    m = parseInt(m);
-    n = parseInt(n);
-    return Math.floor(Math.random() * (n - m + 1)) + m;
-  };
+  bubbles();
 
-  initparticles();
-
-} );
+})
 
 AOS.init({
   // Global settings:
