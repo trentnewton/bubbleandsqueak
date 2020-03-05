@@ -106,9 +106,13 @@ AOS.init({
 
 });
 
-const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
+
 const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
 // const prices = widow.removeWidowedElements('.prices');
+
+if(window.innerHeight < window.innerWidth){
+    const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
+}
 
 // var lazyLoadInstance = new LazyLoad({
 //   elements_selector: ".lazy",
