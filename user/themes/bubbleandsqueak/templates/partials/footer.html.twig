@@ -125,10 +125,10 @@
     <script>
         var head = document.getElementsByTagName( 'head' )[0];
 
-        // Save the original method
+        {# // Save the original method #}
         var insertBefore = head.insertBefore;
 
-        // Replace it!
+        {# // Replace it! #}
         head.insertBefore = function( newElement, referenceElement ) {
 
             if ( newElement.href && newElement.href.indexOf( 'https://fonts.googleapis.com/css?family=Roboto' ) === 0 ) {
@@ -179,8 +179,7 @@
             var map = new google.maps.Map(mapElement, {
                 zoom: {{ page.header.googlemaps.zoom }},
                 center: bubbleandsqueak,
-                styles:
-                    [
+                styles: [
                     {
                         "featureType": "water",
                         "stylers": [
@@ -377,7 +376,7 @@
                             }
                         ]
                     }
-                    ]
+                ]
             });
             var icon = {
                 url: '{{ theme_url }}/dist/assets/img/location-pin.svg',
@@ -397,7 +396,7 @@
                 infowindow.open(map, marker);
             });
             markerElement.style.opacity = 1; #}
-            // listen for the window resize event & trigger Google Maps to update too
+            {# listen for the window resize event & trigger Google Maps to update too #}
             window.onresize = function() {
                 var currCenter = map.getCenter();
                 google.maps.event.trigger(map, 'resize');
@@ -418,7 +417,7 @@
 
                 var observer = new IntersectionObserver(
                     function(entries, self) {
-                        // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
+                        {# Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838 #}
                         var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
                         if (isIntersecting) {
                             var mapsJS = document.createElement('script')
