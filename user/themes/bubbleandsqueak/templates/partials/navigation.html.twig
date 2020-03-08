@@ -53,7 +53,9 @@
                             </div>
                             {% set background_image = page.header.background_image ? page.media[page.header.background_image] : page.media.images|first %}
                             <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                <img aria-hidden="true" class="hide lazy" alt="{{ site.title|e('html') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
+                                <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                <meta itemprop="width" content="{{ background_image.width }}">
+                                <meta itemprop="height" content="{{ background_image.height }}">
                             </div>
                         </div>
                     </div>

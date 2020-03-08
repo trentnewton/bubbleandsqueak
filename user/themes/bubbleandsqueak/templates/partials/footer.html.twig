@@ -45,7 +45,9 @@
                             </div>
                             {% if background_image %}
                                 <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                    <img aria-hidden="true" class="hide lazy" alt="{{ site.title|e('html') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
+                                    <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                    <meta itemprop="width" content="{{ background_image.width }}">
+                                    <meta itemprop="height" content="{{ background_image.height }}">
                                 </div>
                             {% endif %}
 						</div>
@@ -71,7 +73,9 @@
                                         {{ page.header.opening_hours.daystart|date("l") }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.dayend|date("l") }}&nbsp;{{ page.header.opening_hours.timestart|date('h:ia') }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.timeend|date('h:ia') }}
                                     </span>
                                     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                        <img aria-hidden="true" class="hide lazy" alt="{{ site.title|e('html') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
+                                        <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                        <meta itemprop="width" content="{{ background_image.width }}">
+                                        <meta itemprop="height" content="{{ background_image.height }}">
                                     </div>
 								</div>
 							</div>
@@ -88,7 +92,9 @@
                                     <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
 									<span class="info-text" itemprop="telephone" content="{{ page.header.location.number }}">{{ page.header.location.number }}</span>
                                     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                        <img aria-hidden="true" class="hide lazy" alt="{{ site.title|e('html') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ background_image.url }}" width="{{ background_image.width }}" height="{{ background_image.height }}" itemprop="url">
+                                        <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                        <meta itemprop="width" content="{{ background_image.width }}">
+                                        <meta itemprop="height" content="{{ background_image.height }}">
                                     </div>
 								</div>
 							</div>
