@@ -20,8 +20,8 @@ import LazyLoad from 'vanilla-lazyload';
 
 // $( document ).foundation();
 
-// document.addEventListener('DOMContentLoaded', function(){
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function(){
+// window.onload = function() {
 
   "use strict";
 
@@ -129,5 +129,5 @@ window.onload = function() {
 
   lazyLoadInstance.update();
 
-}
-// })
+// }
+})
