@@ -1,6 +1,7 @@
 // import IntersectionObserver from 'intersection-observer';
 import AOS from 'aos';
 import Widow from 'widow-js';
+import lazySizes from 'lazysizes';
 // import LazyLoad from 'vanilla-lazyload';
 // import $ from 'jquery';
 // import 'what-input';
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   "use strict";
 
-  document.getElementById('contact-form').addEventListener("submit", function(e){
+  document.getElementById('contact-form').addEventListener('submit', function(e){
     e.preventDefault()
     var form = e.target
     var data = new FormData(form)
@@ -112,7 +113,16 @@ const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
 
 if(window.innerHeight < window.innerWidth){
     const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
-}
+};
+
+lazySizes.cfg.lazyClass = 'lazy';
+
+document.addEventListener('lazybeforeunveil', function(e){
+    var bg = e.target.getAttribute('data-bg');
+    if(bg){
+      e.target.style.backgroundImage = bg;
+    }
+});
 
 // var lazyLoadInstance = new LazyLoad({
 //   elements_selector: ".lazy",
