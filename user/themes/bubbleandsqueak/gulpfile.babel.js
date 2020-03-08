@@ -23,6 +23,7 @@ import minifyGradients from 'postcss-minify-gradients';
 import discardComments from 'postcss-discard-comments';
 import discardOverridden from 'postcss-discard-overridden';
 import reduceInitial  from 'postcss-reduce-initial';
+import sortMediaQueries from 'postcss-sort-media-queries'
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -103,6 +104,7 @@ function sass() {
     discardComments(),
     discardOverridden(),
     reduceInitial(),
+    sortMediaQueries(),
 
     // UnCSS - Uncomment to remove unused styles in production
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),

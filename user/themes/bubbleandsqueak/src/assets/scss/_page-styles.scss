@@ -472,7 +472,7 @@ a.special {
 		text-align: center;
 		direction: ltr;
 
-		@include breakpoint (small only) {
+		@include breakpoint (small down) {
 			font-size: rem-calc(40px);
 		}
 
@@ -824,7 +824,7 @@ a.special {
 
 		&:nth-child(2)[data-aos] {
 
-			@include breakpoint (small only) {
+			@include breakpoint (small down) {
 				transition-delay: 0s;
 			}
 
@@ -888,7 +888,7 @@ a.special {
 			border-right: solid 0px rgba($white, 0.125);
 		}
 
-		@include breakpoint(small only) {
+		@include breakpoint(small down) {
 
 			&:nth-child(2) {
 				border-right: solid 0px rgba($white, 0.125);
@@ -966,7 +966,7 @@ a.special {
 		font-weight: bold;
 		margin: 0.5em 0 0.75em;
 
-		@include breakpoint(small only) {
+		@include breakpoint(small down) {
 			font-size: rem-calc(32px);
 		}
 
@@ -1062,7 +1062,7 @@ a.special {
 
 	.second-column[data-aos] {
 
-		@include breakpoint (small only) {
+		@include breakpoint (small down) {
 			 transition-delay: 0s;
 		}
 
