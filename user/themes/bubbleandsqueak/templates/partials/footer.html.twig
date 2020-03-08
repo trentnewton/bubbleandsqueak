@@ -129,12 +129,12 @@
 </footer>
 {% if page.header.googlemaps.key %}
     <script>
-        var head = document.getElementsByTagName( 'head' )[0];
+        {# var head = document.getElementsByTagName( 'head' )[0];
 
-        {# // Save the original method #}
+        // Save the original method
         var insertBefore = head.insertBefore;
 
-        {# // Replace it! #}
+        // Replace it!
         head.insertBefore = function( newElement, referenceElement ) {
 
             if ( newElement.href && newElement.href.indexOf( 'https://fonts.googleapis.com/css?family=Roboto' ) === 0 ) {
@@ -174,9 +174,11 @@
                     return to;
                 }
             });
-        }
+        } #}
 
-        function google_maps_init() {
+        var head=document.getElementsByTagName("head")[0],insertBefore=head.insertBefore;head.insertBefore=function(e,r){e.href&&0===e.href.indexOf("https://fonts.googleapis.com/css?family=Roboto")||insertBefore.call(head,e,r)},Object.assign||Object.defineProperty(Object,"assign",{enumerable:!1,configurable:!0,writable:!0,value:function(e,r){"use strict";if(null==e)throw new TypeError("Cannot convert first argument to object");for(var t=Object(e),n=1;n<arguments.length;n++){var o=arguments[n];if(null!=o)for(var a=Object.keys(Object(o)),i=0,s=a.length;i<s;i++){var c=a[i],f=Object.getOwnPropertyDescriptor(o,c);void 0!==f&&f.enumerable&&(t[c]=o[c])}}return t}});
+
+        {# function google_maps_init() {
             'use strict'
 
             var bubbleandsqueak = {lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }}}
@@ -394,23 +396,25 @@
                 map: map,
                 icon: icon
             });
-            {# map.markers.push(marker);
+            // map.markers.push(marker);
             var infowindow = new google.maps.InfoWindow({
                 content: markerElement.innerHTML
             });
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.open(map, marker);
             });
-            markerElement.style.opacity = 1; #}
-            {# listen for the window resize event & trigger Google Maps to update too #}
+            markerElement.style.opacity = 1; //
+            // listen for the window resize event & trigger Google Maps to update too
             window.onresize = function() {
                 var currCenter = map.getCenter();
                 google.maps.event.trigger(map, 'resize');
                 map.setCenter(currCenter);
             };
-        };
+        }; #}
 
-        function google_maps_lazyload(api_key) {
+        function google_maps_init(){"use strict";var e={lat:{{ page.header.googlemaps.latitude }},lng:{{ page.header.googlemaps.longitude }}},t=(document.getElementById("marker"),document.getElementById("map")),l=new google.maps.Map(t,{zoom:{{ page.header.googlemaps.zoom }},center:e,styles:[{featureType:"water",stylers:[{color:"#40c1d9"}]},{featureType:"administrative",elementType:"labels.text.stroke",stylers:[{color:"#f5f6f6"},{weight:6}]},{featureType:"administrative",elementType:"labels.text.fill",stylers:[{color:"#008199"}]},{featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#bfeaf2"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.stroke",stylers:[{color:"#7fd5e5"},{lightness:0}]},{featureType:"road",elementType:"labels.text.stroke",stylers:[{lightness:0}]},{featureType:"road",elementType:"labels.text.fill",stylers:[{lightness:0}]},{featureType:"road.highway",elementType:"labels.icon"},{featureType:"landscape",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape",stylers:[{lightness:0},{color:"#bfdbdd"}]},{featureType:"landscape.man_made",stylers:[{visibility:"off"}]},{featureType:"water",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"water",elementType:"labels.text.fill",stylers:[{lightness:-100}]},{featureType:"poi",elementType:"labels.text.fill",stylers:[{hue:"#40939b"}]},{featureType:"poi",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"poi",elementType:"labels.icon",stylers:[{hue:"#006f79"},{saturation:0}]},{featureType:"poi",elementType:"geometry",stylers:[{visibility:"on"},{color:"#7fb7bc"}]},{featureType:"road.highway",elementType:"geometry.fill",stylers:[{color:"#00accc"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.fill",stylers:[{color:"#bfdbdd"},{lightness:0}]},{featureType:"poi",elementType:"labels",stylers:[{visibility:"simplified"}]}]}),s={url:"{{ theme_url }}/dist/assets/img/location-pin.svg",anchor:new google.maps.Point(69,118),scaledSize:new google.maps.Size(140,140)};new google.maps.Marker({position:e,map:l,icon:s});window.onresize=function(){var e=l.getCenter();google.maps.event.trigger(l,"resize"),l.setCenter(e)}};
+
+        {# function google_maps_lazyload(api_key) {
             'use strict'
 
             if (api_key) {
@@ -423,7 +427,7 @@
 
                 var observer = new IntersectionObserver(
                     function(entries, self) {
-                        {# Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838 #}
+                        // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
                         var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
                         if (isIntersecting) {
                             var mapsJS = document.createElement('script')
@@ -437,9 +441,12 @@
 
                 observer.observe(map);
             };
-        };
+        }; #}
+
+        function google_maps_lazyload(e){"use strict";if(e){var t=document.getElementById("map");new IntersectionObserver(function(n,o){if("boolean"==typeof n[0].isIntersecting?n[0].isIntersecting:n[0].intersectionRatio>0){var s=document.createElement("script");s.src="https://maps.googleapis.com/maps/api/js?callback=google_maps_init&key="+e,document.getElementsByTagName("head")[0].appendChild(s),o.unobserve(t)}},{rootMargin:"100px",threshold:0}).observe(t)}};
 
         google_maps_lazyload('{{ page.header.googlemaps.key }}');
+
     </script>
 
 {% endif %}
