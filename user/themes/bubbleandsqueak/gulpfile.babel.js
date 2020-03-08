@@ -101,7 +101,7 @@ function sass() {
     discardDuplicates(),
     svgo(),
     minifyGradients(),
-    discardComments(),
+    discardComments({removeAll: true}),
     discardOverridden(),
     reduceInitial(),
     sortMediaQueries(),
