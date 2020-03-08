@@ -106,13 +106,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   });
 
-  const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
-  // const prices = widow.removeWidowedElements('.prices');
-
-  if(window.innerHeight < window.innerWidth){
-    const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
-  };
-
   // lazySizes.cfg.lazyClass = 'lazy';
 
   // document.addEventListener('lazybeforeunveil', function(e){
@@ -122,12 +115,19 @@ document.addEventListener('DOMContentLoaded', function(){
   //     }
   // });
 
-  var lazyLoadInstance = new LazyLoad({
-    elements_selector: ".lazy",
-    load_delay: 300
-  });
-
-  lazyLoadInstance.update();
-
 // }
 })
+
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy",
+  load_delay: 300
+});
+
+lazyLoadInstance.update();
+
+const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
+// const prices = widow.removeWidowedElements('.prices');
+
+if(window.innerHeight < window.innerWidth){
+  const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
+};
