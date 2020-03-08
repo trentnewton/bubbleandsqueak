@@ -14,6 +14,7 @@
     "foundation-sites": "^6.6.1",
     "intersection-observer": "^0.7.0",
     "jquery": "^3.4.1",
+    "lazysizes": "^5.2.0",
     "motion-ui": "^2.0.3",
     "postcss-discard-comments": "^4.0.2",
     "postcss-discard-duplicates": "^4.0.2",
