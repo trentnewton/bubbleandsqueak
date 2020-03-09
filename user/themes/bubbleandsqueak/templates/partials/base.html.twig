@@ -100,7 +100,7 @@
             });
             lazyLoadInstance.update();
         </script>#}
-        {#<script>
+        <script>
             function lCss(u, m) {
                 var l = document.createElement('link');
                 l.rel = 'stylesheet';
@@ -110,16 +110,16 @@
                 document.getElementsByTagName('head')[0].insertBefore(l, document.getElementsByTagName('head')[0].firstChild);
             }
             function dCss() {
-                lCss('/dist/assets/css/app.css', 'all')
+                lCss('{{ theme_url }}/dist/assets/css/app.css', 'all')
             }
             if (window.addEventListener) {
                 window.addEventListener('DOMContentLoaded', dCss, false)
             } else {
                 window.onload=dCss
             }
-        </script>#}
-        <script type="text/javascript">
-            function lCss(e,s){var t=document.createElement("link");t.rel="stylesheet",t.type="text/css",t.href=e,t.media=s,document.getElementsByTagName("head")[0].appendChild(t)}function dCss(){lCss("{{ theme_url }}/dist/assets/css/app.css","all")}window.addEventListener?window.addEventListener("DOMContentLoaded",dCss,!1):window.onload=dCss;
         </script>
+        {#<script type="text/javascript">
+            function lCss(e,s){var t=document.createElement("link");t.rel="stylesheet",t.type="text/css",t.href=e,t.media=s,document.getElementsByTagName("head")[0].appendChild(t)}function dCss(){lCss("{{ theme_url }}/dist/assets/css/app.css","all")}window.addEventListener?window.addEventListener("DOMContentLoaded",dCss,!1):window.onload=dCss;
+        </script>#}
     </body>
 </html>
