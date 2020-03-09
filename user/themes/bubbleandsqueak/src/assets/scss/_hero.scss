@@ -1,0 +1,29 @@
+.banner {
+	padding: rem-calc(160 0);
+	background-color: $secondary-color;
+	//background-image: linear-gradient(to top, rgba($secondary-color, 0.7), rgba(#008199, 0.7)), url('#{$asset-path}/img/main-bg.jpg');
+	background-size: auto, cover;
+	background-attachment: fixed, fixed;
+	background-position: center, center;
+
+	@include breakpoint (medium down) {
+		background-attachment: scroll;
+	}
+
+	p {
+
+		@include breakpoint(medium up) {
+			font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h3', 'font-size') * 1px);
+		}
+
+	}
+
+	.grid-container {
+		position: relative;
+	}
+
+}
+
+.error {
+	background-image: linear-gradient(to top, rgba($secondary-color, 0.7), rgba(#008199, 0.7)), url('#{$asset-path}/img/error-bg.jpg');
+}

@@ -48,12 +48,13 @@
 
     {% block stylesheets %}
         {# <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css"> #}
-        {% do assets.addCss('theme://dist/assets/css/app.css') %}
+        {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %}
+        {# {% do assets.addCss('theme://dist/assets/css/app.css') %} #}
     {% endblock %}
 
     {% block javascripts %}
         {# {% do assets.addJs('jquery', 101) %} #}
-        {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' }) %}
+        {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head'} ) %}
         {# {% do assets.addJs('theme://src/assets/js/lazyload.min.js', { loading: 'inline', position: 'before', group:'bottom' }) %} #}
         {% do assets.addJs('theme://dist/assets/js/app.js', {group:'bottom'}) %}
     {% endblock %}
@@ -99,5 +100,26 @@
             });
             lazyLoadInstance.update();
         </script>#}
+        {#<script>
+            function lCss(u, m) {
+                var l = document.createElement('link');
+                l.rel = 'stylesheet';
+                l.type = 'text/css';
+                l.href = u;
+                l.media = m;
+                document.getElementsByTagName('head')[0].insertBefore(l, document.getElementsByTagName('head')[0].firstChild);
+            }
+            function dCss() {
+                lCss('/dist/assets/css/app.css', 'all')
+            }
+            if (window.addEventListener) {
+                window.addEventListener('DOMContentLoaded', dCss, false)
+            } else {
+                window.onload=dCss
+            }
+        </script>#}
+        <script type="text/javascript">
+            function lCss(u,m){var l=document.createElement('link');l.rel='stylesheet';l.type='text/css';l.href=u;l.media=m;document.getElementsByTagName('head')[0].insertBefore(l,document.getElementsByTagName('head')[0].firstChild)}function dCss(){lCss('{{ url('theme://dist/assets/css/app.css') }}','all')}if(window.addEventListener){window.addEventListener('DOMContentLoaded',dCss,!1)}else{window.onload=dCss}
+        </script>
     </body>
 </html>

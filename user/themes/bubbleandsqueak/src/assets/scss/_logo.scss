@@ -1,0 +1,49 @@
+// logo colours
+
+.a {
+    stop-color: #05BFE2;
+}
+
+.b {
+    stop-color: #03B9DB;
+}
+
+.c {
+    stop-color: #01AFD0;
+}
+
+.d {
+    stop-color: $secondary-color;
+}
+
+.e {
+    stop-color: #029BB8;
+}
+
+.st9 {
+	fill: $primary-color;
+}
+
+.st10 {
+	fill: $secondary-color;
+}
+
+.logo {
+
+	a {
+
+		.a,
+		.b,
+		.c,
+		.d,
+		.e {
+			transition: stop-color $transition-time ease;
+		}
+
+		.st10 {
+			transition: fill $transition-time ease;
+		}
+
+	}
+
+}
