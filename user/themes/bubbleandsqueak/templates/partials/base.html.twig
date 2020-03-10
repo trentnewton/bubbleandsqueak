@@ -29,8 +29,8 @@
         {% if page.find('/footer').header.location.state is defined and not empty %}
             <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
         {% endif %}
-        <link rel="preload" href="{{ theme_url }}/dist/assets/css/app.css" as="style">
-        <link rel="preload" href="{{ theme_url }}/dist/assets/js/app.js" as="script">
+        <link rel="preload" href="{{ url('theme://dist/assets/css/app.css') }}" as="style">
+        <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script">
         <link rel="preconnect" href="https://use.typekit.net">
         {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -120,9 +120,6 @@
                 window.onload=dCss
             }
         </script>#}
-        {#<script type="text/javascript">
-            function lCss(e,s){var t=document.createElement("link");t.rel="stylesheet",t.type="text/css",t.href=e,t.media=s,document.getElementsByTagName("head")[0].appendChild(t)}function dCss(){lCss("{{ theme_url }}/dist/assets/css/app.css","all")}window.addEventListener?window.addEventListener("DOMContentLoaded",dCss,!1):window.onload=dCss;
-        </script>#}
         <script type="text/javascript">
             {#var cb = function () {
                 var l = document.createElement('link'); l.rel = 'stylesheet';
@@ -141,6 +138,25 @@
             godefer.parentNode.insertBefore(giftofspeed, godefer);#}
 
             var s=document.createElement("link");s.rel="stylesheet";s.href="{{ theme_url }}/dist/assets/css/app.css";s.type="text/css";var t=document.getElementsByTagName("link")[0];t.parentNode.insertBefore(s,t);
+
+            window.addEventListener('load', () => {
+                if (!navigator.serviceWorker) {
+                    return
+                }
+
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(() => {
+                    //...ok
+                    }).catch((err) => {
+                    console.log('registration failed', err)
+                })
+            })
+            // if ('serviceWorker' in navigator) {
+            //   window.addEventListener('load', function() {
+            //     navigator.serviceWorker.register('/sw.js');
+            //   });
+            // }
         </script>
     </body>
 </html>
