@@ -50,8 +50,8 @@
 
     {% block stylesheets %}
         {# <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css"> #}
-        {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %}
-        {# {% do assets.addCss('theme://dist/assets/css/app.css') %} #}
+        {# {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %} #}
+        {% do assets.addCss('theme://dist/assets/css/app.css') %}
     {% endblock %}
 
     {% block javascripts %}
@@ -120,24 +120,16 @@
                 window.onload=dCss
             }
         </script>#}
-        <script type="text/javascript">
-            {#var cb = function () {
-                var l = document.createElement('link'); l.rel = 'stylesheet';
-                l.href = '{{ theme_url }}/dist/assets/css/app.css';
-                var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-            };
-            var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-            if (raf) raf(cb);
-            else window.addEventListener('load', cb);#}
+        {#<script type="text/javascript">
 
-            {#var giftofspeed = document.createElement('link');
+            var giftofspeed = document.createElement('link');
             giftofspeed.rel = 'stylesheet';
             giftofspeed.href = '/dist/assets/css/app.css';
             giftofspeed.type = 'text/css';
             var godefer = document.getElementsByTagName('link')[0];
             godefer.parentNode.insertBefore(giftofspeed, godefer);#}
 
-            var s=document.createElement("link");s.rel="stylesheet";s.href="{{ theme_url }}/dist/assets/css/app.css";s.type="text/css";var t=document.getElementsByTagName("link")[0];t.parentNode.insertBefore(s,t);
-        </script>
+            {#var s=document.createElement("link");s.rel="stylesheet";s.href="{{ theme_url }}/dist/assets/css/app.css";s.type="text/css";var t=document.getElementsByTagName("link")[0];t.parentNode.insertBefore(s,t);
+        </script>#}
     </body>
 </html>
