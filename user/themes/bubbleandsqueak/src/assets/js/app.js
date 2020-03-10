@@ -131,3 +131,12 @@ const headings = new Widow({words: 2, elements: 'h1, h2, h3', warnings: false});
 if(window.innerHeight < window.innerWidth){
   const paragraphs = new Widow({words: 4, elements: '#maincontent p', warnings: false});
 };
+
+window.addEventListener('load', () => {
+  if (!navigator.serviceWorker) { return }
+    navigator.serviceWorker.register('/sw.js', {
+      scope: '/'
+    }).catch((err) => {
+      console.log('SW registration failed', err)
+    })
+})
