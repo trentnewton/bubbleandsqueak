@@ -51,7 +51,7 @@
     {% block stylesheets %}
         {# <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css"> #}
         {# {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %} #}
-        {% do assets.addCss('theme://dist/assets/css/app.css') %}
+        {% do assets.addCss('theme://dist/assets/css/app.css', { media: 'print', onload: 'this.media="all"'} )|raw %}
     {% endblock %}
 
     {% block javascripts %}
