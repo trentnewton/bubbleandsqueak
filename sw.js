@@ -4,8 +4,7 @@ const PAGENOTFOUND_GIF = '/user/themes/bubbleandsqueak/dist/assets/img/pagenotfo
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll([
-    '/favicon.ico',
-    '/user/themes/bubbleandsqueak/dist/assets/css/style.css',
+    '/user/themes/bubbleandsqueak/dist/assets/css/app.css',
     '/user/themes/bubbleandsqueak/dist/assets/js/app.js',
     '/user/themes/bubbleandsqueak/dist/assets/img/offline.gif',
     '/user/themes/bubbleandsqueak/dist/assets/img/pagenotfound.gif'
