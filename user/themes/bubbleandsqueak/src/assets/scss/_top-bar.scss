@@ -48,9 +48,9 @@
 		font-weight: $global-weight-bold;
 
 		@include breakpoint(large down) {
-			font-size: rem-calc(14);
+			font-size: rem-calc(14px);
 			justify-content: center;
-			border-top: 1px solid #7fb7bc;
+			border-top: thin solid #7fb7bc;
 
 			a {
 				padding: 0.7rem 0.6rem;
@@ -160,13 +160,13 @@
 	}
 
 	.info {
-		margin-right: rem-calc(32);
+		margin-right: rem-calc(32px);
 
 		@include breakpoint(large down) {
 			margin-right: 0;
 			margin-bottom: 1rem;
-			border-top: 1px solid #7fb7bc;
-			border-bottom: 1px solid #7fb7bc;
+			border-top: thin solid #7fb7bc;
+			border-bottom: thin solid #7fb7bc;
 			padding-top: 0.5rem;
 			padding-bottom: 0.5rem;
 		}
@@ -179,7 +179,7 @@
 	}
 
 	.info-icon {
-		margin-right: rem-calc(16);
+		margin-right: rem-calc(16px);
 		font-size: rem-calc(40px);
 	}
 
@@ -202,12 +202,12 @@
 
     from {
         opacity: 0;
-        transform: translate3d(0, 40px, 0);
+        transform: translate3d(0, rem-calc(40px), 0);
     }
 
     20% {
         opacity: 0.5;
-        transform: translate3d(0, 20px, 0);
+        transform: translate3d(0, rem-calc(20px), 0);
     }
 
     70% {
@@ -217,12 +217,12 @@
 
     70% {
         opacity: 0;
-        transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, rem-calc(-10px), 0);
     }
 
     100% {
         opacity: 0;
-        transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, rem-calc(-20px), 0);
     }
 
 }
