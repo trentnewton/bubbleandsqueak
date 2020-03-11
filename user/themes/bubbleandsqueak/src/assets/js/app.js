@@ -20,8 +20,8 @@ import LazyLoad from 'vanilla-lazyload';
 
 // $( document ).foundation();
 
-document.addEventListener('DOMContentLoaded', function(){
-// window.onload = function() {
+// document.addEventListener('DOMContentLoaded', function(){
+window.onload = function() {
 
   "use strict";
 
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function(){
   //     }
   // });
 
-// }
-})
+}
+// })
 
 AOS.init({
   // Global settings:
