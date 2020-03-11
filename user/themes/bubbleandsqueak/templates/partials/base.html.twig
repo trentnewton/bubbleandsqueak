@@ -93,7 +93,7 @@
             {% endblock %}
 
         {% block bottom %}
-            {{ assets.js('bottom', { loading: 'async defer' })|raw }}
+            {{ assets.js('bottom')|raw }}
         {% endblock %}
         {#<script>
             var lazyLoadInstance = new LazyLoad({
