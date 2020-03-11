@@ -29,8 +29,8 @@
         {% if page.find('/footer').header.location.state is defined and not empty %}
             <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
         {% endif %}
-        <link rel="preload" href="{{ url('theme://dist/assets/css/app.css') }}" as="style">
-        <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script">
+{#         <link rel="preload" href="{{ url('theme://dist/assets/css/app.css') }}" as="style">
+        <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script"> #}
         <link rel="preconnect" href="https://use.typekit.net">
         {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
