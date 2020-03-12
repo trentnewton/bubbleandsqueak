@@ -107,7 +107,7 @@ function sass() {
     sortMediaQueries(),
 
     // UnCSS - Uncomment to remove unused styles in production
-    // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
+    PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
 
   return gulp.src('src/assets/scss/*.scss', '!src/assets/scss/_*.scss')
