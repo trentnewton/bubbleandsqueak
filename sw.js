@@ -1,13 +1,12 @@
 const CACHE_NAME = 'bubbleandsqueak-v1'
 const OFFLINE_GIF = '/user/themes/bubbleandsqueak/dist/assets/img/offline.gif'
-const PAGENOTFOUND_GIF = '/user/themes/bubbleandsqueak/dist/assets/img/pagenotfound.gif'
+const PAGENOTFOUND = '/error'
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll([
     '/user/themes/bubbleandsqueak/dist/assets/css/app.css',
     '/user/themes/bubbleandsqueak/dist/assets/js/app.js',
     '/user/themes/bubbleandsqueak/dist/assets/img/offline.gif',
-    '/user/themes/bubbleandsqueak/dist/assets/img/pagenotfound.gif'
   ])))
 })
 
@@ -33,7 +32,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(fetch(event.request, options)
     .then((response) => {
       if (response.status === 404) {
-        return fetch(PAGENOTFOUND_GIF)
+        return fetch(PAGENOTFOUND)
       }
       const resClone = response.clone()
       return caches.open(CACHE_NAME).then((cache) => {
