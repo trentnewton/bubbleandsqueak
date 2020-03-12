@@ -12,7 +12,7 @@
 	&:after {
 		content: '';
 		position: absolute;
-		top: rem-calc(2000px);
+		top: 2000px;
 		background: transparent;
 		border-radius:100%
 	}
@@ -98,7 +98,7 @@
     }
 
     to {
-        transform: translate3d(0, rem-calc(-2000), 0);
+        transform: translate3d(0, -2000px, 0);
     }
 
 }
