@@ -44,7 +44,7 @@
 // @include foundation-thumbnail;
 // Menu-based containers
 @include foundation-menu;
-// @include foundation-menu-icon;
+@include foundation-menu-icon;
 // @include foundation-accordion-menu;
 // @include foundation-drilldown-menu;
 // @include foundation-dropdown-menu;
@@ -76,5 +76,6 @@
 @import 'logo';
 @import 'top-bar';
 @import 'hero';
+// @import 'bubbles-hero';
 // @import 'page-styles';
 // @import 'footer';
