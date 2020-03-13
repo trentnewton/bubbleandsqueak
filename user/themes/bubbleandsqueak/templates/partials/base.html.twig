@@ -92,7 +92,7 @@
                 {% include 'partials/footer.html.twig' with {'page': page.find('/footer', true)} %}
             {% endblock %}
 
-        {% block bottom %}
+        {% block bottom deferred %}
             {{ assets.js('bottom', {loading: 'async defer'})|raw }}
         {% endblock %}
         {#<script>
