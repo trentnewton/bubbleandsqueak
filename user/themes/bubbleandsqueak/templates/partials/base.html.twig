@@ -51,14 +51,14 @@
     {% block stylesheets %}
         {# <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css"> #}
         {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %}
-        {% do assets.addCss('theme://dist/assets/css/app.css', { media: 'print', onload: 'this.media=\'all\''})|raw %}
+        {% do assets.addCss('theme://dist/assets/css/app.css', { media: 'print', onload: 'this.media=\'all\''} )|raw %}
     {% endblock %}
 
     {% block javascripts %}
         {# {% do assets.addJs('jquery', 101) %} #}
         {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' } ) %}
         {# {% do assets.addJs('theme://src/assets/js/lazyload.min.js', { loading: 'inline', position: 'before', group:'bottom' }) %} #}
-        {% do assets.addJs('theme://dist/assets/js/app.js', { group: 'bottom', loading: 'async defer' }) %}
+        {% do assets.addJs('theme://dist/assets/js/app.js', { group: 'bottom' ) %}
     {% endblock %}
 
     {% block assets deferred %}
