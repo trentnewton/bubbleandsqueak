@@ -94,7 +94,7 @@ function sass() {
 
   const postCssPlugins = [
     // Autoprefixer
-    autoprefixer(),
+    autoprefixer({browsers: ['since 2015']}),
     mergeRules(),
     uniqueSelectors(),
     minifySelectors(),
