@@ -5,6 +5,25 @@ body {
 	overflow-x: hidden;
 }
 
+html {
+
+	&::-webkit-scrollbar {
+    	width: 15px;
+    	height: 15px
+	}
+
+	&::-webkit-scrollbar-thumb {
+	    background: linear-gradient(180deg, #bfeaf2, #7fd5e5);
+	    border-radius: 25px;
+	    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+	}
+
+	&::-webkit-scrollbar-track {
+	    background: transparent;
+	}
+
+}
+
 a {
 	@extend a;
 	transition: all $transition-time;
