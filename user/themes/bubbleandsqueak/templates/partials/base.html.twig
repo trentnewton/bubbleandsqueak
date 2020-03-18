@@ -29,9 +29,7 @@
         {% if page.find('/footer').header.location.state is defined and not empty %}
             <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
         {% endif %}
-{#         <link rel="preload" href="{{ url('theme://dist/assets/css/app.css') }}" as="style">
-        <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script"> #}
-        {# <link rel="preconnect" href="https://use.typekit.net"> #}
+        <link rel="preload" as="style" href="{{ url('theme://dist/assets/css/app.css') }}" type="text/css">
         {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link rel="preconnect" href="https://maps.gstatic.com">
@@ -65,6 +63,20 @@
         {{ assets.css('head', { media: 'print', onload: 'this.media=\'all\''})|raw }}
         {{ assets.js()|raw }}
     {% endblock %}
+    {# <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script"> #}
+    {# <link rel="preconnect" href="https://use.typekit.net"> #}
+    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.otf') }}" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff') }}" type="font/woff" crossorigin="anonymous"> #}
+    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff2') }}" type="font/woff2" crossorigin="anonymous"> #}
+    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.otf') }}" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff') }}" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff2') }}" type="font/woff2" crossorigin="anonymous"> #}
+    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.otf') }}" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff') }}" type="font/woff" crossorigin="anonymous"> #}
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff2') }}" type="font/woff2" crossorigin="anonymous">
+    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.otf') }}" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff') }}" type="font/woff" crossorigin="anonymous">
+    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff2') }}" type="font/woff2" crossorigin="anonymous"> #}
     {% include 'partials/google-analytics.html.twig' with {'page': page.find('/footer', true)} %}
     {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %}
     </head>
