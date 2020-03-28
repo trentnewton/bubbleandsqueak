@@ -29,7 +29,7 @@
         {% if page.find('/footer').header.location.state is defined and not empty %}
             <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
         {% endif %}
-        <link rel="preload" as="style" href="{{ url('theme://dist/assets/css/app.css') }}" type="text/css">
+        {# <link rel="preload" as="style" href="{{ url('theme://dist/assets/css/app.css') }}" type="text/css"> #}
         {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link rel="preconnect" href="https://maps.gstatic.com">
@@ -55,7 +55,6 @@
     {% block javascripts %}
         {# {% do assets.addJs('jquery', 101) %} #}
         {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' } ) %}
-        {# {% do assets.addJs('theme://src/assets/js/lazyload.min.js', { loading: 'inline', position: 'before', group:'bottom' }) %} #}
         {% do assets.addJs('theme://dist/assets/js/app.js', { group: 'bottom' }) %}
     {% endblock %}
 
