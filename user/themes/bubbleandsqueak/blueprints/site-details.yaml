@@ -54,7 +54,7 @@ form:
                   label: Twitter Account name
             header.number:
               type: text
-              label: Main Phone Nmmber
+              label: Main Phone Number
             header.googlemaps_key:
               type: text
               label: Google Maps API Key
