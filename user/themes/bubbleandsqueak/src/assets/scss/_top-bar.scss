@@ -7,7 +7,7 @@
 		text-align: center;
 
 		a {
-			padding: 0 1rem;
+			padding: 0 $global-padding;
 
 			svg {
 				margin-bottom: 0;
@@ -16,7 +16,7 @@
 		}
 
 		@include breakpoint(large down) {
-			margin-bottom: 1rem;
+			margin-bottom: $global-margin;
 		}
 
 	}
@@ -50,10 +50,10 @@
 		@include breakpoint(large down) {
 			font-size: rem-calc(14px);
 			justify-content: center;
-			border-top: thin solid #7fb7bc;
+			border-top: thin solid $primary-color-lighten-20;
 
 			a {
-				padding: 0.7rem 0.6rem;
+				padding: rem-calc(11.2px 9.6px);
 			}
 
 		}
@@ -149,7 +149,12 @@
 
 		.button {
 			margin-bottom: 0;
-			margin-right: 1rem;
+			margin-right: $global-margin;
+
+			&:hover,
+			&:focus {
+				background: $primary-color;
+			}
 
 			@include breakpoint(large down) {
 				margin-right: 0;
@@ -160,26 +165,26 @@
 	}
 
 	.info {
-		margin-right: rem-calc(32px);
+		margin-right: #{$global-margin * 2};
 
 		@include breakpoint(large down) {
 			margin-right: 0;
-			margin-bottom: 1rem;
-			border-top: thin solid #7fb7bc;
-			border-bottom: thin solid #7fb7bc;
-			padding-top: 0.5rem;
-			padding-bottom: 0.5rem;
+			margin-bottom: $global-margin;
+			border-top: thin solid $primary-color-lighten-20;
+			border-bottom: thin solid $primary-color-lighten-20;
+			padding-top: #{$global-padding / 2};
+			padding-bottom: #{$global-padding / 2};
 		}
 
 		@include breakpoint(large only) {
-			border-top: 0px solid #7fb7bc;
-			border-bottom: 0px solid #7fb7bc;
+			border-top: 0px solid $primary-color-lighten-20;
+			border-bottom: 0px solid $primary-color-lighten-20;
 		}
 
 	}
 
 	.info-icon {
-		margin-right: rem-calc(16px);
+		margin-right: $global-margin;
 		font-size: rem-calc(40px);
 	}
 
@@ -200,29 +205,29 @@
 
 @keyframes menu-bubbles {
 
-    from {
-        opacity: 0;
-        transform: translate3d(0, rem-calc(40px), 0);
-    }
-
-    20% {
-        opacity: 0.5;
-        transform: translate3d(0, rem-calc(20px), 0);
-    }
-
-    70% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-
-    70% {
-        opacity: 0;
-        transform: translate3d(0, rem-calc(-10px), 0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate3d(0, rem-calc(-20px), 0);
-    }
-
-}
+	from {
+		opacity: 0;
+		transform: translate3d(0, rem-calc(40px), 0);
+	}
+  
+	20% {
+		opacity: 0.5;
+		transform: translate3d(0, rem-calc(20px), 0);
+	}
+  
+	70% {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+  
+	70% {
+		opacity: 0;
+		transform: translate3d(0, rem-calc(-10px), 0);
+	}
+  
+	100% {
+		opacity: 0;
+		transform: translate3d(0, rem-calc(-20px), 0);
+	}
+  
+  }

@@ -69,13 +69,27 @@ $global-font-size: 120%;
 $global-width: rem-calc(900);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #00707A,
-  secondary: #00ACCC,
+  // primary: #00707A,
+  primary: #006f79,
+  secondary: #00accc,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
 );
+$primary-rgb: rgba(get-color(primary), 0.99);
 $secondary-rgb: rgba(get-color(secondary), 0.99);
+$primary-color-lighten-20: desaturate(lighten(get-color(primary), 38%), 69%);
+$primary-color-lighten-10: desaturate(lighten(get-color(primary), 19%), 58%);
+$secondary-color-lighten-30: desaturate(lighten(get-color(secondary), 45%), 33%);
+$secondary-color-lighten-20: desaturate(lighten(get-color(secondary), 30%), 33%);
+$secondary-color-lighten-10: desaturate(lighten(get-color(secondary), 15%), 33%);
+$secondary-color-darken-10: darken(get-color(secondary), 10%);
+$secondary-color-darken-15: darken(get-color(secondary), 15%);
+$secondary-color-darken-20: darken(get-color(secondary), 20%);
+$secondary-color-lighten-20-rgb: rgba($secondary-color-lighten-20, 0.99);
+$secondary-color-lighten-10-rgb: rgba($secondary-color-lighten-10, 0.99);
+$secondary-color-darken-10-rgb: rgba($secondary-color-darken-10, 0.99);
+$secondary-color-darken-20-rgb: rgba($secondary-color-darken-20, 0.99);
 $light-gray: #ccd2d2;
 $medium-gray: #7a898a;
 $dark-gray: #294042;
@@ -170,11 +184,11 @@ $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
-$paragraph-margin-bottom: 1rem;
+$paragraph-margin-bottom: $global-margin;
 $paragraph-text-rendering: optimizeLegibility;
 $enable-code-inline: true;
 $anchor-color: $secondary-color;
-$anchor-color-hover: #bfeaf2;
+$anchor-color-hover: $secondary-color-lighten-30;
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -301,7 +315,7 @@ $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $secondary-color;
-$button-background-hover: #005666;
+$button-background-hover: $secondary-color-darken-20;
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
@@ -455,7 +469,7 @@ $select-background: $white;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
 $input-color: $white;
-$input-placeholder-color: #bfeaf2;
+$input-placeholder-color: $secondary-color-lighten-30;
 $input-font-family: inherit;
 $input-font-size: rem-calc(20);
 $input-font-weight: $global-weight-normal;
@@ -464,7 +478,7 @@ $input-background: rgba($white, 0.25);
 $input-background-focus: $input-background;
 $input-background-disabled: $light-gray;
 $input-border: medium solid rgba($white, 0.50);
-$input-border-focus: medium solid #40c1d9;
+$input-border-focus: medium solid $secondary-color-lighten-10;
 $input-padding: $form-spacing / 2;
 $input-shadow: inset 0 0px 0px rgba($black, 0.1);
 $input-shadow-focus: 0 0 0px $medium-gray;

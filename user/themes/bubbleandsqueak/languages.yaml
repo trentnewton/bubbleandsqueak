@@ -21,6 +21,62 @@ en:
         HEADLINE: Archives
       SYNDICATE:
         HEADLINE: Syndicate
+    FOOTER:
+      FACEBOOK_LINK_TITLE: Visit us on Facebook
+      INSTAGRAM_LINK_TITLE: Follow us on Instagram
+      TWITTER_LINK_TITLE: Follow us on Twitter
+      PHONE_NUMBER_LINK_TITLE: Give us a call
+      PHONE_NUMBER_LINK_TEXT: Phone
+      BOTTOM_NAVIGATION_ARIA_LABEL: Bottom Navigation
+      PRIVACY_PAGE_LINK_TEXT: Privacy
+      TERMS_PAGE_LINK_TEXT: Terms
+    NAVIGATION:
+      MAIN_NAVIGATION_ARIA_LABEL: Main Navigation
+      LOGO_LINK_TITLE: Visit our Home Page
+      PHONE_NUMBER_LINK_TITLE: Give us a call
+      PHONE_NUMBER_LINK_TEXT: Phone
+    SVG:
+      EFTPOS_ICON: Eftpos
+      PRESS_ICON: Finger pressing button
+      APARTMENT_BUILDING_ICON: Apartment Building
+      SMARTPHONE_CHARGING_ICON: Smartphone with charging lead
+      HOUSE_ICON: House
+      AIRCONDITIONER_ICON: Air Conditioner Unit with Air Coming Out
+      LAUNDRY_SERVICE_ICON: Clothing on a Hanger
+      WASHING_MACHINE_ICON: Washing Machine
+      LARGE_WASHING_MACHINE_ICON: Large Washing Machine
+      CALL_ICON: Phone Call Symbol
+      COUCH_ICON: Couch
+      SHOPPING_CART_ICON: Shopping cart
+      PARK_ICON: Car Park Sign
+      HD_MONITOR_ICON: Widescreen Television
+      CLOCK_ICON: Clock
+      LOCATION_PIN_ICON: Location Pin
+      PAPER_AIRPLANE_ICON: Paper Airplane
+      CLOTHES_BASKET_ICON: Clothes Basket
+      ONE_CLOTHES_BASKET_ICON: One Clothes Basket
+      TWO_CLOTHES_BASKET_ICON: Two Clothes Baskets
+      THREE_CLOTHES_BASKET_ICON: Three Clothes Baskets
+      FOUR_CLOTHES_BASKET_ICON: Four Clothes Baskets
+      DISCOUNT_ICON: Discount
+    ERROR:
+      TITLE: Whoops! Looks like this page doesn't exist.
+      CONTENT: Please visit the link below to go the home page
+      HOME_PAGE_LINK_TEXT: Home Page
+    LOCATION:
+      ADDRESS: Address
+      OPENING_HOURS: Opening Hours
+      ALL_DAY: All Day
+      CALL: Call
+      VISIT_THE: Visit the
+      PAGE: Page
+
+      
+
+  PLUGIN_ERROR:
+    ERROR: "Error"
+    ERROR_MESSAGE: "The page you are looking for was moved, removed, renamed, or might have never existed. Probably not the place you were looking for."
+    ROUTE_404: "404 Route"
 
 de:
   THEME_BUBBLEANDSQUEAK:

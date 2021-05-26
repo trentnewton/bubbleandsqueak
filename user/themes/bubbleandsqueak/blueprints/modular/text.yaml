@@ -8,7 +8,7 @@ form:
         content:
           fields:
             header.media_order:
-              label: Page Media (first one will be displayed next to your content)
+              label: Page Media (first one will be displayed next to your content). Please upload square formats (1:1) for this to display nicely (not required for hero images).
             header.image_align:
               type: select
               label: Image position
@@ -28,3 +28,22 @@ form:
                 .icon:
                   type: iconpicker
                   label: Icon
+            header.link_to_page:
+              type: fieldset
+
+              fields:
+                header.link_to_page.text:
+                  type: text
+                  label: Link Text
+                header.link_to_page.link:
+                  type: pages
+                  size: medium
+                  classes: fancy
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  help: PLUGIN_ADMIN.HOME_PAGE_HELP
+                  label: Link to Page (one link only)
+                  multiple: true
+                  validate:
+                    type: commalist

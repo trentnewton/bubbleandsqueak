@@ -17,18 +17,21 @@ form:
                       label: Icon
         content:
           fields:
-            header.subtext:
+            header.content:
               type: markdown
-              label: Sub Text
+              validate:
+                type: textarea
+              label: Page Content
             header.media_order:
-              label: Page Media (first one will be displayed next to your content)
+              label: Page Media (first one will be displayed next to your content). Please upload square formats (1:1) for this to display nicely (not required for hero images).
             header.hero_image:
               type: filepicker
               label: Hero Image
               preview_images: true
               description: 'If not specified, this defaults to the first image found in the page''s folder'
-            header.body_image:
-              type: filepicker
-              label: Body Image
-              preview_images: true
-              description: 'Image for the body text'
+            # header.body_image:
+            #   type: filepicker
+            #   label: Body Image
+            #   preview_images: true
+            #   description: 'Image for the body text'
+            

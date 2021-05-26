@@ -1,0 +1,144 @@
+title: Text
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.map_align:
+              type: select
+              label: Map Position
+              classes: fancy
+              default: left
+              options:
+                'left': 'Left'
+                'right': 'Right'
+            header.location:
+              type: fieldset
+              title: Location Information
+              help: Help text
+              info: Address & Phone Number information
+              text: Enter in details for location address
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.location.name:
+                  type: text
+                  label: Location Name
+                header.location.streetaddress:
+                  type: text
+                  label: Street Address
+                header.location.suburb:
+                  type: text
+                  label: Suburb
+                header.location.state:
+                  type: text
+                  label: State
+                header.location.postcode:
+                  type: text
+                  label: Postcode
+            header.googlemaps:
+              type: fieldset
+              title: Google Maps Information
+              help: Help text
+              info: Configuration for Google Maps
+              text: Enter in details for Google Maps (Please add a tag of 'location' under Taxonomies on the Options tab)
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.googlemaps.latitude:
+                  type: text
+                  label: Google Maps Latitude
+                header.googlemaps.longitude:
+                  type: text
+                  label: Google Maps Longitude
+                header.googlemaps.zoom:
+                  type: text
+                  label: Google Maps Zoom Level
+                  validate:
+                    type: number
+            header.opening_hours:
+              type: fieldset
+              title: Business operating hours
+              help: Help text
+              info: Details for opening hours
+              text: Enter in times for opening hours
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.opening_hours.description:
+                  type: text
+                  label: Description
+                header.opening_hours.daystart:
+                  type: text
+                  label: Day Opened Start (Monday)
+                header.opening_hours.dayend:
+                  type: text
+                  label: Day Opened End (Friday)
+                header.opening_hours.timestart:
+                  type: text
+                  label: Times Opened Start (9:00am)
+                header.opening_hours.timeend:
+                  type: text
+                  label: Times Opened End (5:00pm)
+                header.opening_hours.allday:
+                  type: checkboxes
+                  default:
+                      allday: false
+                  options:
+                      allday: All Day
+                  use: keys
+                  label: Check if open all day
+            header.location_number:
+              type: text
+              label: Location Phone Nmmber
+            header.location_facebook:
+              type: fieldset
+              title: Facebook Page
+              help: Help text
+              info: Facebook page information
+              text: URL & Icon for Location Facebook Page
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.location_facebook.icon:
+                  type: iconpicker
+                  label: Icon
+                header.location_facebook.url:
+                  type: text
+                  label: Facebook Page URL
+            header.link_to_page:
+              type: fieldset
+
+              fields:
+                header.link_to_page.text:
+                  type: text
+                  label: Link Text
+                header.link_to_page.link:
+                  type: pages
+                  size: medium
+                  classes: fancy
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  help: PLUGIN_ADMIN.HOME_PAGE_HELP
+                  label: Link to Page (one link only)
+                  multiple: true
+                  validate:
+                    type: commalist
+        # options:
+        #   type: tab
+        #   title: PLUGIN_ADMIN.OPTIONS
+
+        #   fields:
+        #     taxonomies:
+        #       fields:
+        #         header.taxonomy.tag:
+        #           type: selectize
+        #           label: Tag
+        #           classes: fancy
+        #           default: 'location'
+        #           validate:
+        #             type: commalist

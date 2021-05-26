@@ -1,34 +1,23 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-	<header class="banner bubbles-container bubbles-active error" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-		<div class="bubbles" id="bubbles1"></div>
-	    <div class="bubbles" id="bubbles2"></div>
-	    <div class="bubbles" id="bubbles3"></div>
-	    <div class="bubbles" id="bubbles4"></div>
-		<div class="grid-container inner">
-			<div class="grid-x grid-padding-x">
-				<div class="large-12 cell">
-					<h1 data-aos="fade" itemprop="headline">{{ 'PLUGIN_ERROR.ERROR'|t }}&nbsp;{{ page.header.http_response_code }}</h1>
-					<div data-aos="fade" data-aos-delay="1000" itemprop="description">
-						<p>The page you are looking for was moved, removed, renamed, or might have never existed. Probably not the place you were looking for.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
 	<main id="maincontent" tabindex="-1" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
 	    <div class="wrapper">
 			<div class="grid-container inner">
 				<div class="grid-x grid-margin-x">
 	                <div class="cell medium-6">
-                		<img class="lazy" data-src="/user/assets/error.jpg" alt="White Pomeranian puppy inside the washing machine." width="1920" height="1281">
+						{% set image_url = '/user/assets/error.jpg' %}
+						<picture>
+							<source data-src="{{ image_url|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }}" type="image/webp">
+                        	<source data-src="{{ image_url }}" type="image/jpeg"> 
+							<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" data-src="{{ image_url }}" alt="White Pomeranian puppy inside the washing machine." width="1920" height="1281">
+						</picture>
 					</div>
 					<div class="cell medium-6">
-						<h2 class="major" itemprop="headline">Whoops! Looks like this page doesn't exist.</h2>
+						<h2 class="major" itemprop="headline">{{ 'THEME_BUBBLEANDSQUEAK.ERROR.TITLE'|t }}</h2>
 	                    {# <p>The page you are looking for was moved, removed, renamed, or might have never existed.<br>Probably not the place you were looking for.</p> #}
-						<p>Please visit the link below to go the home page:</p>
-						<a class="special" href="{{ home_url }}">Home Page</a>
+						<p>{{ 'THEME_BUBBLEANDSQUEAK.ERROR.CONTENT'|t }}:</p>
+						<a class="special" href="{{ home_url }}">{{ 'THEME_BUBBLEANDSQUEAK.ERROR.HOME_PAGE_LINK_TEXT'|t }}</a>
 					</div>
 				</div>
 			</div>

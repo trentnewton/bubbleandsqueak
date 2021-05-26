@@ -27,11 +27,11 @@
     {% endif %}
 {% endblock %}
 
-{% block hero %}
+{# {% block hero %}
     {% for module in page.collection() if module.template == 'modular/hero' %}
         {{ module.content|raw }}
     {% endfor %}
-{% endblock %}
+{% endblock %} #}
 
 {% block body %}
     <main id="maincontent" tabindex="-1" class="information" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
@@ -40,4 +40,3 @@
         {% endfor %}
     </main>
 {% endblock %}
-

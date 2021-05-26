@@ -5,10 +5,13 @@ form:
   fields:
     tabs:
       fields:
-        buttons:
+        content:
           type: tab
-          title: Hero
+          # title: Hero
           fields:
+            header.subtext:
+              type: markdown
+              label: Sub Text
             header.hero_image:
               type: filepicker
               label: Hero Image

@@ -11,11 +11,13 @@ $aos-distance: rem-calc(100px) !default;
 [data-aos^='fade'][data-aos^='fade'] {
   opacity: 0;
   transition-property: opacity, transform;
+  will-change: opacity, transform;
 
   &.aos-animate {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+
 }
 
 [data-aos='fade-up'] {
@@ -172,3 +174,33 @@ $aos-distance: rem-calc(100px) !default;
 //   transform: perspective(2500px) rotateX(100deg);
 //   &.aos-animate {transform: perspective(2500px) rotateX(0);}
 // }
+
+@keyframes bubbles {
+
+	0% {
+		opacity: 0;
+	}
+
+	20% {
+		opacity: 1;
+		transform: translate3d(0, -20%, 0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate3d(0, -1000%, 0);
+	}
+
+}
+
+@keyframes animBubble {
+
+  from {
+      transform: translate3d(0, 0, 0)
+  }
+
+  to {
+      transform: translate3d(0, -2000px, 0);
+  }
+
+}

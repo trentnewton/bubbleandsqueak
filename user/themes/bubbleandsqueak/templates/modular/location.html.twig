@@ -1,0 +1,268 @@
+{% set site_details = page.find('/site-details') %}
+<section id="{{ page.header.title|hyphenize }}" class="wrapper spotlight">
+    <div class="grid-container inner">
+        <div class="grid-x grid-margin-x align-middle">
+            {% if page.header.googlemaps.latitude %}
+                <div class="cell medium-6{% if page.header.map_align == 'right' %} small-order-2 medium-order-1{% else %} small-order-2 medium-order-2{% endif %} location {% if page.header.map_align == 'right' %}left{% else %}right{% endif %}">
+                    {% if page.header.link_to_page.text %}
+                        <a class="special header-link {% if page.header.map_align == 'right' %}left{% else %}right{% endif %}" href="{{ base_url }}{{ page.header.link_to_page.link|first }}">
+                            <h2 data-aos="fade-{% if page.header.map_align == 'right' %}left{% else %}right{% endif %}" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                        </a>
+                    {% else %}
+                        <h2 data-aos="fade-{% if page.header.map_align == 'right' %}left{% else %}right{% endif %}" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                    {% endif %}
+                    <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+                    <div data-aos="fade" data-aos-delay="500">
+                        {% if page.header.location.streetaddress %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-apartment-building" role="img"><use xlink:href="#icon-apartment-building"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.ADDRESS'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        {% if page.header.location.name %}
+                                                <span class="info-text" itemprop="name">{{ page.header.location.name }},</span><br>
+                                        {% endif %}
+                                        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                            {% if page.header.location.streetaddress %}
+                                                <span class="info-text" itemprop="streetAddress">{{ page.header.location.streetaddress }},</span><br>
+                                            {% endif %}
+                                            {% if page.header.location.suburb %}
+                                                <span class="info-text" itemprop="addressLocality">{{ page.header.location.suburb }}</span>&nbsp;
+                                            {% endif %}
+                                            {% if page.header.location.state %}
+                                                <span class="info-text" itemprop="addressRegion">{{ page.header.location.state }}</span>&nbsp;
+                                            {% endif %}
+                                            {% if page.header.location.postcode %}
+                                                <span class="info-text" itemprop="postalCode">{{ page.header.location.postcode }}</span>
+                                            {% endif %}
+                                        </div>
+                                        {# {% if background_image %}
+                                            <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                                <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                                <meta itemprop="width" content="{{ background_image.width }}">
+                                                <meta itemprop="height" content="{{ background_image.height }}">
+                                            </div>
+                                        {% endif %} #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.opening_hours.daystart %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-clock" role="img"><use xlink:href="#icon-clock"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.OPENING_HOURS'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
+                                        <span class="info-text" itemprop="description">{{ page.header.opening_hours.description }}</span><br>
+                                        <span class="info-text" itemprop="openingHours" content="{{ page.header.opening_hours.daystart|date("D")|slice(0, 2) }}-{{ page.header.opening_hours.dayend|date("D")|slice(0, 2) }}{% if page.header.opening_hours.allday.allday %}{% else %} {{ page.header.opening_hours.timestart|date('H:i') }}-{{ page.header.opening_hours.timeend|date('H:i') }}{% endif %}">
+                                            {{ page.header.opening_hours.daystart|date("l") }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.dayend|date("l") }},&nbsp;{% if page.header.opening_hours.allday.allday %}{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.ALL_DAY'|t }}{% else %}{{ page.header.opening_hours.timestart|date('h:ia') }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.timeend|date('h:ia') }}{% endif %}
+                                        </span>
+                                        {# <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                            <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                            <meta itemprop="width" content="{{ background_image.width }}">
+                                            <meta itemprop="height" content="{{ background_image.height }}">
+                                        </div> #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.location_number %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-call" role="img"><use xlink:href="#icon-call"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.CALL'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
+                                        <span class="info-text" itemprop="telephone" content="{{ page.header.location_number }}">{{ page.header.location_number }}</span>
+                                        {# <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                            <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                            <meta itemprop="width" content="{{ background_image.width }}">
+                                            <meta itemprop="height" content="{{ background_image.height }}">
+                                        </div> #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.location_facebook.url %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-{{ page.header.location_facebook.icon }}" role="img"><use xlink:href="#icon-{{ page.header.location_facebook.icon }}"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">Facebook</span><br>
+                                    <a href="{{ page.header.location_facebook.url }}" title="{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.VISIT_THE'|t }} {{ page.header.title }} Facebook {{ 'THEME_BUBBLEANDSQUEAK.LOCATION.PAGE'|t }}" target="_blank" rel="noreferrer">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.VISIT_THE'|t }} {{ page.header.title }} Facebook {{ 'THEME_BUBBLEANDSQUEAK.LOCATION.PAGE'|t }}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.link_to_page.text %}
+                            <span data-aos="fade" data-aos-delay="1700" ><a class="special" href="{{ base_url }}{{ page.header.link_to_page.link|first }}">{{ page.header.link_to_page.text }}</a></span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="cell medium-6{% if page.header.map_align == 'right' %} image-right small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %}">
+                    {% if page.header.googlemaps.latitude %}
+                        <div class="map-container">
+                            <div id="map-{{ page.header.title|hyphenize }}" class="google-map"></div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="cell small-12">
+                    {% if page.header.link_to_page.text %}
+                        <a class="special header-link right" href="{{ base_url }}{{ page.header.link_to_page.link|first }}">
+                            <h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                        </a>
+                    {% else %}
+                        <h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
+                    {% endif %}
+                    <div data-aos="fade" data-aos-delay="500">{{ content|raw }}</div>
+                    <div data-aos="fade" data-aos-delay="500">
+                        {% if page.header.location.streetaddress %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-apartment-building" role="img"><use xlink:href="#icon-apartment-building"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.ADDRESS'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        {% if page.header.location.name %}
+                                                <span class="info-text" itemprop="name">{{ page.header.location.name }},</span><br>
+                                        {% endif %}
+                                        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                            {% if page.header.location.streetaddress %}
+                                                <span class="info-text" itemprop="streetAddress">{{ page.header.location.streetaddress }},</span><br>
+                                            {% endif %}
+                                            {% if page.header.location.suburb %}
+                                                <span class="info-text" itemprop="addressLocality">{{ page.header.location.suburb }}</span>&nbsp;
+                                            {% endif %}
+                                            {% if page.header.location.state %}
+                                                <span class="info-text" itemprop="addressRegion">{{ page.header.location.state }}</span>&nbsp;
+                                            {% endif %}
+                                            {% if page.header.location.postcode %}
+                                                <span class="info-text" itemprop="postalCode">{{ page.header.location.postcode }}</span>
+                                            {% endif %}
+                                        </div>
+                                        {# {% if background_image %}
+                                            <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                                <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                                <meta itemprop="width" content="{{ background_image.width }}">
+                                                <meta itemprop="height" content="{{ background_image.height }}">
+                                            </div>
+                                        {% endif %} #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.opening_hours.daystart %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-clock" role="img"><use xlink:href="#icon-clock"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.OPENING_HOURS'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
+                                        <span class="info-text" itemprop="description">{{ page.header.opening_hours.description }}</span><br>
+                                        <span class="info-text" itemprop="openingHours" content="{{ page.header.opening_hours.daystart|date("D")|slice(0, 2) }}-{{ page.header.opening_hours.dayend|date("D")|slice(0, 2) }}{% if page.header.opening_hours.allday.allday %}{% else %} {{ page.header.opening_hours.timestart|date('H:i') }}-{{ page.header.opening_hours.timeend|date('H:i') }}{% endif %}">
+                                            {{ page.header.opening_hours.daystart|date("l") }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.dayend|date("l") }},&nbsp;{% if page.header.opening_hours.allday.allday %}{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.ALL_DAY'|t }}{% else %}{{ page.header.opening_hours.timestart|date('h:ia') }}&nbsp;&ndash;&nbsp;{{ page.header.opening_hours.timeend|date('h:ia') }}{% endif %}
+                                        </span>
+                                        {# <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                            <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                            <meta itemprop="width" content="{{ background_image.width }}">
+                                            <meta itemprop="height" content="{{ background_image.height }}">
+                                        </div> #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.location_number %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-call" role="img"><use xlink:href="#icon-call"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.CALL'|t }}</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
+                                        <span class="info-text" itemprop="telephone" content="{{ page.header.location_number }}">{{ page.header.location_number }}</span>
+                                        {# <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                            <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                            <meta itemprop="width" content="{{ background_image.width }}">
+                                            <meta itemprop="height" content="{{ background_image.height }}">
+                                        </div> #}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.location_facebook.url %}
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-{{ page.header.location_facebook.icon }}" role="img"><use xlink:href="#icon-{{ page.header.location_facebook.icon }}"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">Facebook</span><br>
+                                    <a href="{{ page.header.location_facebook.url }}" title="{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.VISIT_THE'|t }} {{ page.header.title }} Facebook {{ 'THEME_BUBBLEANDSQUEAK.LOCATION.PAGE'|t }}" target="_blank" rel="noreferrer">{{ 'THEME_BUBBLEANDSQUEAK.LOCATION.VISIT_THE'|t }} {{ page.header.title }} Facebook {{ 'THEME_BUBBLEANDSQUEAK.LOCATION.PAGE'|t }}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if page.header.link_to_page.text %}
+                            <span data-aos="fade" data-aos-delay="1700" ><a class="special" href="{{ base_url }}{{ page.header.link_to_page.link|first }}">{{ page.header.link_to_page.text }}</a></span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if page.header.googlemaps.latitude %}
+        <script>
+            const {{ page.header.title|hyphenize }} = { lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }} };
+
+            function initialise{{ page.header.title|hyphenize }}() {
+                'use strict'
+
+                const mapProp{{ page.header.title|hyphenize }} = {
+                    center: {{ page.header.title|hyphenize }},
+                    zoom: {{ page.header.googlemaps.zoom }},
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    styles: bubbleAndSqueakMapStyles
+                };
+                const map{{ page.header.title|hyphenize }} = new google.maps.Map(document.getElementById("map-{{ page.header.title|hyphenize }}"), mapProp{{ page.header.title|hyphenize }});
+                const marker{{ page.header.title|hyphenize }} = new google.maps.Marker({
+                    position: {{ page.header.title|hyphenize }},
+                    animation: google.maps.Animation.DROP,
+                    icon: {url:'{{ theme_url }}/dist/assets/img/location-pin.svg', scaledSize: new google.maps.Size(140, 140), anchor: new google.maps.Point(69,118)},
+                    map: map{{ page.header.title|hyphenize }}
+                });
+
+                marker{{ page.header.title|hyphenize }}.setMap(map{{ page.header.title|hyphenize }});
+
+                {# const markerElement = document.getElementById('marker') #}
+
+                {# const infowindow = new google.maps.InfoWindow({
+                    content: markerElement.innerHTML
+                }); #}
+
+                {# google.maps.event.addListener(marker{{ page.header.title|hyphenize }}, 'click', function () {
+                    infowindow.open(map{{ page.header.title|hyphenize }}, marker{{ page.header.title|hyphenize }});
+                }); #}
+
+                {# markerElement.style.opacity = 1; #}
+
+                window.onresize = function() {
+                    var currCenter = map{{ page.header.title|hyphenize }}.getCenter();
+                    google.maps.event.trigger(map{{ page.header.title|hyphenize }}, 'resize');
+                    map{{ page.header.title|hyphenize }}.setCenter(currCenter);
+                };
+
+            };
+
+        </script>
+    {% endif %}
+</section>

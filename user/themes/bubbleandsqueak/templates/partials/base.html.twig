@@ -3,18 +3,18 @@
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
 {% use 'blocks/base.html.twig' %}
 <!DOCTYPE html>
-<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}" dir="ltr" itemscope itemtype="http://schema.org/WebSite">
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}" dir="ltr" itemscope itemtype="http://schema.org/WebSite" class="no-js">
     <head>
     {% block head deferred %}
         <meta charset="utf-8" />
         <title>{% if page.header.googletitle is defined and not empty %}{{ page.header.googletitle }}{% else %}{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}{% endif %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% include 'partials/metadata.html.twig' %}
-        {% if page.find('/footer').header.facebookappkey is defined and not empty %}
+        {# {% if page.find('/footer').header.facebookappkey is defined and not empty %}
             <meta property="fb:app_id" content="{{ page.find('/footer').header.facebookappkey }}">
-        {% endif %}
-        {% if page.find('/footer').header.twitter.name is defined and not empty %}
-            <meta name="twitter:site" content="@{{ page.find('/footer').header.twitter.name }}" />
+        {% endif %} #}
+        {% if page.find('/site-details').header.twitter.name is defined and not empty %}
+            <meta name="twitter:site" content="@{{ page.find('/site-details').header.twitter.name }}" />
         {% endif %}
         <link rel="canonical" href="{{ page.url(true, true) }}" />
         <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ url('theme://dist/assets/img/apple-touch-icon.png') }}">
@@ -22,99 +22,461 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url('theme://dist/assets/img/favicon-16x16.png') }}">
         <link rel="manifest" href="{{ url('theme://dist/assets/img/site.webmanifest') }}">
         <link rel="mask-icon" href="{{ url('theme://dist/assets/img/safari-pinned-tab.svg') }}" color="#5bbad5">
-        {% if page.find('/footer').header.googlemaps.latitude is defined and not empty %}
+        {# {% if page.find('/footer').header.googlemaps.latitude is defined and not empty %}
             <meta name="geo.position" content="{{ page.find('/footer').header.googlemaps.latitude }}; {{ page.find('/footer').header.googlemaps.longitude }}">
-        {% endif %}
+        {% endif %} #}
         <meta name="geo.placename" content="{{ site.title|e('html') }}">
-        {% if page.find('/footer').header.location.state is defined and not empty %}
+        {# {% if page.find('/footer').header.location.state is defined and not empty %}
             <meta name="geo.region" content="AU-{{ page.find('/footer').header.location.state }}">
-        {% endif %}
+        {% endif %} #}
         {# <link rel="preload" as="style" href="{{ url('theme://dist/assets/css/app.css') }}" type="text/css"> #}
-        {% if page.find('/footer').header.googlemaps.key is defined and not empty %}
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link rel="preconnect" href="https://maps.gstatic.com">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://maps.googleapis.com">
+            {# <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script"> #}
+        {# <link rel="preconnect" href="https://use.typekit.net"> #}
+        {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.otf') }}" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff') }}" type="font/woff" crossorigin="anonymous"> #}
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff2') }}" type="font/woff2" crossorigin="anonymous">
+        {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.otf') }}" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff') }}" type="font/woff" crossorigin="anonymous"> #}
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff2') }}" type="font/woff2" crossorigin="anonymous">
+        {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.otf') }}" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff') }}" type="font/woff" crossorigin="anonymous"> #}
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff2') }}" type="font/woff2" crossorigin="anonymous">
+        {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.otf') }}" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff') }}" type="font/woff" crossorigin="anonymous">
+        <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff2') }}" type="font/woff2" crossorigin="anonymous"> #}
+        {% set hero_image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
+        {% if hero_image %}
+                <link rel="prefetch" as="image" href="{{ hero_image.url|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }}" type="image/webp">
+                <link rel="prefetch" as="image" href="{{ hero_image.url }}" type="image/jpg">
         {% endif %}
-        {% if page.find('/footer').header.facebookappkey is defined and not empty %}
+        {% if page.header.title == 'Locations' %}
+            {% if page.find('/site-details').header.googlemaps_key is defined and not empty %}
+                <link rel="preconnect" href="https://fonts.gstatic.com">
+                <link rel="preconnect" href="https://maps.gstatic.com">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://maps.googleapis.com">
+            {% endif %}
+        {% endif %}
+        {# {% if page.find('/footer').header.facebookappkey is defined and not empty %}
             <link rel="preconnect" href="https://www.facebook.com">
             <link rel="preconnect" href="https://connect.facebook.net">
-        {% endif %}
-        {% if page.find('/footer').header.googleanalytics is defined and not empty %}
-            <link rel="preconnect" href="https://www.google-analytics.com">
-            <link rel="preconnect" href="https://www.googletagmanager.com">
-        {% endif %}
+        {% endif %} #}
+        {# {% if page.find('/site-details').header.googleanalytics is defined and not empty %} #}
+            {# <link rel="preconnect" href="https://www.google-analytics.com">
+            <link rel="preconnect" href="https://www.googletagmanager.com"> #}
+            {# <link rel="preconnect" href="https://cdn.jsdelivr.net/"> #}
+        {# {% endif %} #}
     {% endblock head %}
 
     {% block stylesheets %}
         {# <link rel="stylesheet" href="https://use.typekit.net/zkx4ilo.css"> #}
         {% do assets.addCss('theme://dist/assets/css/critical.css', { loading: 'inline', position: 'before', group:'head'} ) %}
+        {% set hero_image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
+        {% set hero_image = hero_image.cropResize(1920, 1080) %}
+        {% if hero_image %}
+            <style>
+                .no-js .banner,
+                .no-webp .banner[data-was-processed="true"] {
+                    {# background-image: 
+                        -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 5)), to(rgba(0, 129, 153, .7))),
+                        url({{ hero_image.url }}); #}
+                    background-image:
+                        {# linear-gradient(to top, rgba(0, 172, 204, 1), rgba(0, 129, 153, .7)), #}
+                        url({{ hero_image.url }});
+                }
+                .webp .banner[data-was-processed="true"] {
+                    {# background-image: 
+                        -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 5)), to(rgba(0, 129, 153, .7))),
+                        url({{ hero_image.url|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }}); #}
+                    background-image:
+                        {# linear-gradient(to top, rgba(0, 172, 204, 1), rgba(0, 129, 153, .7)), #}
+                        url({{ hero_image.url|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }});
+                }
+            </style>
+        {# {% else %}
+            <style>
+                .banner {
+                    background-image:
+                        -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 5)), to(rgba(0, 129, 153, .7)));
+                    background-image:
+                        linear-gradient(to top, rgba(0, 172, 204, 1), rgba(0, 129, 153, .7));
+                }
+            </style> #}
+        {% endif %}
+        {% include 'partials/footer-bg.html.twig' with {'page': page.find('/footer', true)} %}
         {% do assets.addCss('theme://dist/assets/css/app.css', { media: 'print', onload: 'this.media=\'all\'', crossorigin: 'anonymous'} )|raw %}
     {% endblock %}
 
     {% block javascripts %}
         {# {% do assets.addJs('jquery', 101) %} #}
-        {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' } ) %}
-        {% do assets.addJs('theme://dist/assets/js/app.js', { group: 'bottom' }) %}
+        {# {% do assets.addJs('theme://dist/assets/js/intersection-observer.js', { loading: 'inline', position: 'before', group:'head' } ) %} #}
+        {% do assets.addJs('theme://node_modules/ga-lite/dist/ga-lite.min.js', { loading: 'inline', position: 'before', group:'head' } ) %}
+        {# {% do assets.addJs('theme://node_modules/aos/dist/aos.js', { loading: 'inline', position: 'before', group:'bottom' } ) %} #}
+        {% do assets.addJs('theme://dist/assets/js/app.js', { loading: 'async defer', group: 'bottom' }) %}
     {% endblock %}
 
     {% block assets deferred %}
         {{ assets.css('head', { media: 'print', onload: 'this.media=\'all\''})|raw }}
         {{ assets.js()|raw }}
     {% endblock %}
-    {# <link rel="preload" href="{{ url('theme://dist/assets/js/app.js') }}" as="script"> #}
-    {# <link rel="preconnect" href="https://use.typekit.net"> #}
-    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.otf') }}" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff') }}" type="font/woff" crossorigin="anonymous"> #}
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/b.woff2') }}" type="font/woff2" crossorigin="anonymous">
-    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.otf') }}" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff') }}" type="font/woff" crossorigin="anonymous"> #}
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/bi.woff2') }}" type="font/woff2" crossorigin="anonymous">
-    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.otf') }}" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff') }}" type="font/woff" crossorigin="anonymous"> #}
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/n.woff2') }}" type="font/woff2" crossorigin="anonymous">
-    {# <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.otf') }}" type="font/otf" crossorigin="anonymous">
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff') }}" type="font/woff" crossorigin="anonymous">
-    <link rel="preload" as="font" href="{{ url('theme://dist/assets/fonts/ni.woff2') }}" type="font/woff2" crossorigin="anonymous"> #}
-    {% if page.find('/footer').header.googleanalytics is defined and not empty %}<script async defer src="https://www.googletagmanager.com/gtag/js?id={{ page.find('/footer').header.googleanalytics }}"></script>{% endif %}
-    <script>{% if page.find('/footer').header.googleanalytics is defined and not empty %}window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '{{ page.find('/footer').header.googleanalytics }}');{% endif %}{% if page.find('/footer').header.facebookappkey is defined and not empty %}window.fbAsyncInit=function(){FB.init({appId:"{{ page.find('/footer').header.facebookappkey }}",cookie:!0,xfbml:!0,version:"v6.0"}),FB.AppEvents.logPageView()},function(e,n,t){var o,c=e.getElementsByTagName(n)[0];e.getElementById(t)||((o=e.createElement(n)).id=t,o.src="https://connect.facebook.net/en_US/sdk.js",c.parentNode.insertBefore(o,c))}(document,"script","facebook-jssdk");{% endif %}
-    </script>
+    {% if page.find('/site-details').header.googleanalytics is defined and not empty %}
+        <script>
+            {# (function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+            ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+            ;c.parentNode.insertBefore(a,c)
+            })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js"); #}
+
+            galite('create', '{{ page.find('/site-details').header.googleanalytics }}', 'auto');
+            galite('send', 'pageview');
+        </script>
+    {% endif %}
+    {# {% if page.find('/site-details').header.googleanalytics is defined and not empty %}<script async defer src="https://www.googletagmanager.com/gtag/js?id={{ page.find('/site-details').header.googleanalytics }}"></script>{% endif %}
+    <script>{% if page.find('/site-details').header.googleanalytics is defined and not empty %}window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '{{ page.find('/site-details').header.googleanalytics }}');{% endif %} #}
+    {# {% if page.find('/footer').header.facebookappkey is defined and not empty %}window.fbAsyncInit=function(){FB.init({appId:"{{ page.find('/footer').header.facebookappkey }}",cookie:!0,xfbml:!0,version:"v6.0"}),FB.AppEvents.logPageView()},function(e,n,t){var o,c=e.getElementsByTagName(n)[0];e.getElementById(t)||((o=e.createElement(n)).id=t,o.src="https://connect.facebook.net/en_US/sdk.js",c.parentNode.insertBefore(o,c))}(document,"script","facebook-jssdk");{% endif %} #}
+    {# </script> #}
+    {% if page.header.title == 'Locations' %}
+        {% if page.find('/site-details').header.googlemaps_key is defined and not empty %}
+            <script defer>
+                {% set options = { items: {'@self.modular': '/locations'}, 'order': {'by': 'date', 'dir': 'desc'}} %}
+                {# {% set my_collection = page.collection(options).ofType('location') %} #}
+                {% set my_collection  = taxonomy.findTaxonomy({'tag':'location'}) %}
+                {# const bubbleicon = {
+                    url: '{{ theme_url }}/dist/assets/img/location-pin.svg',
+                    //anchor: new google.maps.Point(69,118),
+                    //scaledSize: new google.maps.Size(140,140)
+                }; #}
+                {# var head = document.getElementsByTagName( 'head' )[0];
+
+                // Save the original method
+                var insertBefore = head.insertBefore;
+
+                // Replace it!
+                head.insertBefore = function( newElement, referenceElement ) {
+
+                    if ( newElement.href && newElement.href.indexOf( 'https://fonts.googleapis.com/css?family=Roboto' ) === 0 ) {
+                        return;
+                    }
+
+                    insertBefore.call( head, newElement, referenceElement );
+                };
+
+                if (!Object.assign) {
+                    Object.defineProperty(Object, 'assign', {
+                        enumerable: false,
+                        configurable: true,
+                        writable: true,
+                        value: function(target, firstSource) {
+                            'use strict';
+                            if (target === undefined || target === null) {
+                                throw new TypeError('Cannot convert first argument to object');
+                            }
+
+                            var to = Object(target);
+                            for (var i = 1; i < arguments.length; i++) {
+                                var nextSource = arguments[i];
+                                if (nextSource === undefined || nextSource === null) {
+                                    continue;
+                                }
+
+                                var keysArray = Object.keys(Object(nextSource));
+                                for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+                                    var nextKey = keysArray[nextIndex];
+                                    var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+                                    if (desc !== undefined && desc.enumerable) {
+                                        to[nextKey] = nextSource[nextKey];
+                                    }
+                                }
+                            }
+                            return to;
+                        }
+                    });
+                } #}
+
+                var head=document.getElementsByTagName("head")[0],insertBefore=head.insertBefore;head.insertBefore=function(e,r){e.href&&0===e.href.indexOf("https://fonts.googleapis.com/css?family=Roboto")||insertBefore.call(head,e,r)},Object.assign||Object.defineProperty(Object,"assign",{enumerable:!1,configurable:!0,writable:!0,value:function(e,r){"use strict";if(null==e)throw new TypeError("Cannot convert first argument to object");for(var t=Object(e),n=1;n<arguments.length;n++){var o=arguments[n];if(null!=o)for(var a=Object.keys(Object(o)),i=0,s=a.length;i<s;i++){var c=a[i],f=Object.getOwnPropertyDescriptor(o,c);void 0!==f&&f.enumerable&&(t[c]=o[c])}}return t}});
+
+                {# const bubbleAndSqueakMapStyles = [
+                    {
+                        "featureType": "water",
+                        "stylers": [
+                            {
+                                "color": "#40c1d9"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#f5f6f6"
+                            },
+                            {
+                                "weight": 6
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#008199"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#bfeaf2"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#7fd5e5"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.icon"
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            },
+                            {
+                                "color": "#bfdbdd"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "lightness": -100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "hue": "#40939b"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "lightness": 100
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "hue": "#006f79"
+                            },
+                            {
+                                "saturation": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#7fb7bc"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#00accc"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#bfdbdd"
+                            },
+                            {
+                                "lightness": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    }
+                ] #}
+
+                const bubbleAndSqueakMapStyles=[{featureType:"water",stylers:[{color:"#40c1d9"}]},{featureType:"administrative",elementType:"labels.text.stroke",stylers:[{color:"#f5f6f6"},{weight:6}]},{featureType:"administrative",elementType:"labels.text.fill",stylers:[{color:"#008199"}]},{featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#bfeaf2"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.stroke",stylers:[{color:"#7fd5e5"},{lightness:0}]},{featureType:"road",elementType:"labels.text.stroke",stylers:[{lightness:0}]},{featureType:"road",elementType:"labels.text.fill",stylers:[{lightness:0}]},{featureType:"road.highway",elementType:"labels.icon"},{featureType:"landscape",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape",stylers:[{lightness:0},{color:"#bfdbdd"}]},{featureType:"landscape.man_made",stylers:[{visibility:"off"}]},{featureType:"water",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"water",elementType:"labels.text.fill",stylers:[{lightness:-100}]},{featureType:"poi",elementType:"labels.text.fill",stylers:[{hue:"#40939b"}]},{featureType:"poi",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"poi",elementType:"labels.icon",stylers:[{hue:"#006f79"},{saturation:0}]},{featureType:"poi",elementType:"geometry",stylers:[{visibility:"on"},{color:"#7fb7bc"}]},{featureType:"road.highway",elementType:"geometry.fill",stylers:[{color:"#00accc"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.fill",stylers:[{color:"#bfdbdd"},{lightness:0}]},{featureType:"poi",elementType:"labels",stylers:[{visibility:"simplified"}]}];
+
+                function initialise() {
+                    {% for p in my_collection %}
+                        initialise{{ p.title|hyphenize }}();
+                    {% endfor %}
+                }
+
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ page.find('/site-details').header.googlemaps_key }}&callback=initialise&libraries=places"></script>
+        {% endif %}
+    {% endif %}
     {# {% include 'partials/google-analytics.html.twig' with {'page': page.find('/footer', true)} %} #}
     {# {% include 'partials/facebook-sdk.html.twig' with {'page': page.find('/footer', true)} %} #}
     </head>
-    <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}" itemscope itemtype="http://schema.org/WebPage">
+    <body id="top" class="{{ page.template }} {{ page.title|hyphenize }}{% if page.home(true) %} home-page{% endif %}" itemscope itemtype="http://schema.org/WebPage">
         <noscript>Please enable Javascript to use this site!</noscript>
         <a id="skip-nav" tabindex="0" class="show-on-focus" href="#maincontent">Skip to main content</a>
         {% block notice %}
             {% include 'partials/notice.html.twig' with {'page': page.find('/notice', true)} %}
         {% endblock %}
-            {% block header %}
-                {% include 'partials/navigation.html.twig' with {'page': page.find('/footer', true)} %}
-            {% endblock %}
 
-            {% block hero %}{% endblock %}
-
-            {% block body %}
-                {% block messages %}
-                    {% include 'partials/messages.html.twig' ignore missing %}
-                {% endblock %}
-                {{ block('content_surround') }}
-            {% endblock %}
-
-            {% block footer %}
-                {% include 'partials/footer.html.twig' with {'page': page.find('/footer', true)} %}
-            {% endblock %}
-
-        {% block bottom deferred %}
-            {{ assets.js('bottom', {crossorigin: 'anonymous'})|raw }}
+        {% block header %}
+            {% include 'partials/navigation.html.twig' with {'page': page.find('/site-details', true)} %}
         {% endblock %}
-        {#<script>
-            var lazyLoadInstance = new LazyLoad({
-                elements_selector: ".lazy",
-                load_delay: 300
-            });
-            lazyLoadInstance.update();
-        </script>#}
+        
+        {% block hero %}
+            {% include 'partials/hero.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+            {% block messages %}
+                {% include 'partials/messages.html.twig' ignore missing %}
+            {% endblock %}
+            {{ block('content_surround') }}
+        {% endblock %}
+
+        {% block footer %}
+            {% include 'partials/footer.html.twig' with {'page': page.find('/footer', true)} %}
+        {% endblock %}
+        
+        {# {% if page.header.title == 'Locations' %}
+            {% if page.find('/site-details').header.googlemaps_key is defined and not empty %}
+                
+                <script>
+                    
+                    function google_maps_lazyload(api_key) {
+                        'use strict'
+
+                        if (api_key) {
+                            var options = {
+                                rootMargin: '100px',
+                                threshold: 0
+                            };
+
+                            var map = document.getElementByClassName('google-map').id;
+
+                            var observer = new IntersectionObserver(
+                                function(entries, self) {
+                                    // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
+                                    var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
+                                    if (isIntersecting) {
+                                        var mapJS = document.createElement('script')
+                                        mapJS.src = 'https://maps.googleapis.com/maps/api/js?callback=initialise&key=' + api_key
+                                        document.getElementsByTagName('head')[0].appendChild(mapJS)
+                                        self.unobserve(map)
+                                    }
+                                },
+                                options
+                            );
+
+                            observer.observe(map);
+                        };
+                    };
+
+                    google_maps_lazyload('{{ page.find('/site-details').header.googlemaps_key }}');
+
+                </script>
+
+            {% endif %}
+        {% endif %} #}
+        {% block bottom deferred %}
+            {{ assets.js('bottom', { loading: 'async defer', crossorigin: 'anonymous', }, {0:'async'})|raw }}
+        {% endblock %}
         {#<script>
             function lCss(u, m) {
                 var l = document.createElement('link');
@@ -132,17 +494,6 @@
             } else {
                 window.onload=dCss
             }
-        </script>#}
-        {#<script type="text/javascript">
-
-            var giftofspeed = document.createElement('link');
-            giftofspeed.rel = 'stylesheet';
-            giftofspeed.href = '/dist/assets/css/app.css';
-            giftofspeed.type = 'text/css';
-            var godefer = document.getElementsByTagName('link')[0];
-            godefer.parentNode.insertBefore(giftofspeed, godefer);#}
-
-            {#var s=document.createElement("link");s.rel="stylesheet";s.href="{{ theme_url }}/dist/assets/css/app.css";s.type="text/css";var t=document.getElementsByTagName("link")[0];t.parentNode.insertBefore(s,t);
         </script>#}
         {% include 'partials/svg.html.twig' ignore missing %}
     </body>

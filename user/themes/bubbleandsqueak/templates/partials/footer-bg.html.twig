@@ -1,0 +1,31 @@
+{% set background_image = page.header.background_image ? page.media[page.header.background_image] : page.media.images|first %}
+{% if background_image %}
+    <style>
+        .no-js .footer,
+        .no-webp .footer[data-was-processed="true"] {
+            {# background-image: 
+                -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 0.7)), to(rgba(0, 129, 153, 0.9))),
+                url({{ background_image.url }}); #}
+            background-image:
+                {# linear-gradient(to top, rgba(0, 172, 204, 0.7), rgba(0, 129, 153, 0.9)), #}
+                url({{ background_image.url }});
+        }
+        .webp .footer[data-was-processed="true"] {
+            {# background-image: 
+                -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 0.7)), to(rgba(0, 129, 153, 0.9))),
+                url({{ background_image.url|replace({'jpg' : 'jpg.webp', 'jpeg' : 'jpeg.webp'}) }}); #}
+            background-image:
+                {# linear-gradient(to top, rgba(0, 172, 204, 0.7), rgba(0, 129, 153, 0.9)), #}
+                url({{ background_image.url|replace({'jpg' : 'jpg.webp', 'jpeg' : 'jpeg.webp'}) }});
+        }
+    </style>
+{# {% else %}
+    <style>
+        .footer {
+            background-image:
+                -webkit-gradient(linear, left bottom, left top, from(rgba(0, 172, 204, 0.7)), to(rgba(0, 129, 153, 0.9))),
+            background-image:
+                linear-gradient(to top, rgba(0, 172, 204, 0.7), rgba(0, 129, 153, 0.9)),
+        }
+    </style> #}
+{% endif %}

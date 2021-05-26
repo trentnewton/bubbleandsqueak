@@ -3,6 +3,7 @@ import AOS from 'aos';
 import Widow from 'widow-js';
 // import lazySizes from 'lazysizes';
 import LazyLoad from 'vanilla-lazyload';
+import './modernizr-custom';
 // import $ from 'jquery';
 // import 'what-input';
 
@@ -21,22 +22,23 @@ import LazyLoad from 'vanilla-lazyload';
 // $( document ).foundation();
 
 // document.addEventListener('DOMContentLoaded', function(){
+
 window.onload = function() {
 
   "use strict";
 
   document.getElementById('contact-form').addEventListener('submit', function(e){
     e.preventDefault()
-    var form = e.target
-    var data = new FormData(form)
+    const form = e.target
+    const data = new FormData(form)
 
-    var request = new XMLHttpRequest()
+    const request = new XMLHttpRequest()
 
     request.onreadystatechange = function(){
 
       if (request.status >= 200 && request.status < 400) {
         // Success!
-        var resp = request.responseText;
+        const resp = request.responseText;
         document.getElementById('form-result').innerHTML = resp;
         form.reset();
       } else {
@@ -52,29 +54,29 @@ window.onload = function() {
 
   function bubbles() {
 
-    var bubblesClass = document.querySelectorAll('.major.bubbles');
+    const bubblesClass = document.querySelectorAll('.major.bubbles');
 
-    var rnd = function(m, n) {
+    const rnd = function(m, n) {
       m = parseInt(m);
       n = parseInt(n);
       return Math.floor(Math.random() * (n - m + 1)) + m;
     };
 
-    var size = rnd(40, 80) / 10;
+    const size = rnd(40, 80) / 10;
 
     bubblesClass.forEach(function (element) { // Add item to closure
-      var bubbleCount = (parseFloat(getComputedStyle(element, null).width.replace('px', '')) / 50) * 10;
+      const bubbleCount = (parseFloat(getComputedStyle(element, null).width.replace('px', '')) / 50) * 10;
       for (var i = 0; i <= bubbleCount; i++) {
         element.insertAdjacentHTML('beforeend',
           '<span class="particle" style="top:' +
           rnd(20, 80) +
           "%; left:" +
           rnd(0, 95) +
-          "%;width:" +
+          "%; width:" +
           size +
           "px; height:" +
           size +
-          "px;animation-delay: " +
+          "px; animation-delay: " +
           rnd(0, 30) / 10 +
           's;"></span>'
         );
@@ -118,7 +120,9 @@ AOS.init({
 
 });
 
-var lazyLoadInstance = new LazyLoad({
+window.addEventListener('load', AOS.refresh);
+
+const lazyLoadInstance = new LazyLoad({
   elements_selector: ".lazy",
   load_delay: 300
 });

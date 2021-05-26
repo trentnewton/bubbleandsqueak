@@ -1,26 +1,57 @@
-{% set background_image = page.header.background_image ? page.media[page.header.background_image] : page.media.images|first %}
-<footer class="footer lazy" {% if background_image %} data-bg="linear-gradient(to top, rgba(0, 172, 204, .7), rgba(0, 129, 153, .7)), url({{ background_image.url }})"{% else %} data-bg="linear-gradient(to top, rgba(0, 172, 204, .7), rgba(0, 129, 153, .7))"{% endif %} role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+<footer class="footer lazy" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 	<div class="grid-container inner">
 		<h2 data-aos="fade" class="major bubbles" itemprop="headline">{{ page.header.title }}</h2>
 		<div data-aos="fade" data-aos-delay="500">{{ page.content }}</div>
-		<div class="grid-x grid-padding-x">
-			<div data-aos="fade-right" data-aos-delay="1000" class="first-column large-6 medium-6 cell">
+		{# <div class="grid-x grid-padding-x"> #}
+			{# <div data-aos="fade-right" data-aos-delay="1000" class="first-column large-6 medium-6 cell"> #}
+            <div data-aos="fade-right" data-aos-delay="1000" class="first-column">
 				<ul class="menu social">
-					{% if page.header.facebook.url %}
+					{% if page.find('/site-details').header.facebook.url %}
 						<li itemprop="url">
-							<a href="{{ page.header.facebook.url }}" class="small button" title="Visit us on Facebook" target="_blank" rel="noreferrer" itemprop="name"><svg class="icon icon-{{ page.header.facebook.icon }}" role="img"><use xlink:href="#icon-{{ page.header.facebook.icon }}"></use></svg>&nbsp;Facebook</a>
+							<a href="{{ page.find('/site-details').header.facebook.url }}" class="small button" title="{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.FACEBOOK_LINK_TITLE'|t }}" target="_blank" rel="noreferrer" itemprop="name"><svg class="icon icon-{{ page.find('/site-details').header.facebook.icon }}" role="img"><use xlink:href="#icon-{{ page.find('/site-details').header.facebook.icon }}"></use></svg>&nbsp;Facebook</a>
 						</li>
 					{% endif %}
-					{% if page.header.instagram.url %}
+					{% if page.find('/site-details').header.instagram.url %}
 						<li itemprop="url">
-							<a href="{{ page.header.instagram.url }}" class="small button" title="Follow us on Instagram" target="_blank" rel="noreferrer" itemprop="name"><svg class="icon icon-{{ page.header.instagram.icon }}" role="img"><use xlink:href="#icon-{{ page.header.instagram.icon }}"></use></svg>&nbsp;Instagram</a>
+							<a href="{{ page.find('/site-details').header.instagram.url }}" class="small button" title="{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.INSTAGRAM_LINK_TITLE'|t }}" target="_blank" rel="noreferrer" itemprop="name"><svg class="icon icon-{{ page.find('/site-details').header.instagram.icon }}" role="img"><use xlink:href="#icon-{{ page.find('/site-details').header.instagram.icon }}"></use></svg>&nbsp;Instagram</a>
 						</li>
+					{% endif %}
+					{% if page.find('/site-details').header.twitter.name %}
+						<li itemprop="url">
+							<a href="https://twitter.com/{{ page.find('/site-details').header.twitter.name }}" class="small button" title="{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.TWITTER_LINK_TITLE'|t }}" target="_blank" rel="noreferrer" itemprop="name"><svg class="icon icon-{{ page.find('/site-details').header.twitter.icon }}" role="img"><use xlink:href="#icon-{{ page.find('/site-details').header.twitter.icon }}"></use></svg>&nbsp;Twitter</a>
+						</li>
+					{% endif %}
+                    {% if page.find('/site-details').header.number %}
+						<li itemprop="url">
+							<a href="tel:{{ page.find('/site-details').header.number|replace({' ': ''}) }}" class="small button" title="{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.PHONE_NUMBER_LINK_TITLE'|t }}">
+								<svg class="icon icon-call"><use xlink:href="#icon-call"></use></svg>&nbsp;{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.PHONE_NUMBER_LINK_TEXT'|t }}:&nbsp;{{ page.find('/site-details').header.number }}
+							</a>
+						</li>
+                        {# <li>
+                            <div class="flex-container info">
+                                <div class="info-icon">
+                                    <svg class="icon icon-call" role="img"><use xlink:href="#icon-call"></use></svg>
+                                </div>
+                                <div>
+                                    <span class="info-title">Call</span><br>
+                                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                                        <span class="hide" itemprop="name">{{ site.title|e('html') }}</span>
+                                        <span class="info-text" itemprop="telephone" content="{{ page.find('/site-details').header.number }}">{{ page.find('/site-details').header.number }}</span>
+                                        <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                            <meta itemprop="url" content="{{ base_url_absolute }}{{ background_image.url }}">
+                                            <meta itemprop="width" content="{{ background_image.width }}">
+                                            <meta itemprop="height" content="{{ background_image.height }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> #}
 					{% endif %}
 				</ul>
 				<div id="form-result" role="alert"></div>
 				{% include "forms/form.html.twig" with { form: forms('contact-form')|raw } %}
 			</div>
-			<div data-aos="fade-left" data-aos-delay="1000" class="second-column large-6 medium-6 cell">
+			{# <div data-aos="fade-left" data-aos-delay="1000" class="second-column large-6 medium-6 cell">
 				<div class="flex-container info">
 					<div class="info-icon">
 						<svg class="icon icon-apartment-building" role="img"><use xlink:href="#icon-apartment-building"></use></svg>
@@ -101,18 +132,18 @@
 						</div>
 					{% endif %}
 				</div>
-			</div>
-		</div>
+			</div> #}
+		{# </div> #}
 		<div class="grid-x copyright align-center-middle">
-			<nav class="cell medium-12 large-10 copyright-text" aria-label="Bottom Navigation">
+			<nav class="cell medium-12 large-10 copyright-text" aria-label="{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.BOTTOM_NAVIGATION_ARIA_LABEL'|t }}">
 				<ul role="menu" class="menu">
 					{% set currentYear = now|date("Y") %}
 					<li class="menu-text" role="none">&copy;{{ currentYear }} {{ site.title|e('html') }}.</li>
-					{% if page.header.privacy_policy_page %}
-						<li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.header.privacy_policy_page }}" itemprop="name">Privacy</a></li>
+					{% if page.find('/site-details').header.privacy_policy_page %}
+						<li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.find('/site-details').header.privacy_policy_page }}" itemprop="name">{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.PRIVACY_PAGE_LINK_TEXT'|t }}</a></li>
 					{% endif %}
-                    {% if page.header.terms_and_conditions_page %}
-                        <li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.header.terms_and_conditions_page }}" itemprop="name">Terms</a></li>
+                    {% if page.find('/site-details').header.terms_and_conditions_page %}
+                        <li class="menu-text" role="menuitem" itemprop="url"><a href="{{ base_url }}{{ page.find('/site-details').header.terms_and_conditions_page }}" itemprop="name">{{ 'THEME_BUBBLEANDSQUEAK.FOOTER.TERMS_PAGE_LINK_TEXT'|t }}</a></li>
                     {% endif %}
 				</ul>
 			</nav>
@@ -127,326 +158,3 @@
 		</div>
 	</div>
 </footer>
-{% if page.header.googlemaps.key %}
-    <script>
-        {# var head = document.getElementsByTagName( 'head' )[0];
-
-        // Save the original method
-        var insertBefore = head.insertBefore;
-
-        // Replace it!
-        head.insertBefore = function( newElement, referenceElement ) {
-
-            if ( newElement.href && newElement.href.indexOf( 'https://fonts.googleapis.com/css?family=Roboto' ) === 0 ) {
-                return;
-            }
-
-            insertBefore.call( head, newElement, referenceElement );
-        };
-
-        if (!Object.assign) {
-            Object.defineProperty(Object, 'assign', {
-                enumerable: false,
-                configurable: true,
-                writable: true,
-                value: function(target, firstSource) {
-                    'use strict';
-                    if (target === undefined || target === null) {
-                        throw new TypeError('Cannot convert first argument to object');
-                    }
-
-                    var to = Object(target);
-                    for (var i = 1; i < arguments.length; i++) {
-                        var nextSource = arguments[i];
-                        if (nextSource === undefined || nextSource === null) {
-                            continue;
-                        }
-
-                        var keysArray = Object.keys(Object(nextSource));
-                        for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
-                            var nextKey = keysArray[nextIndex];
-                            var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
-                            if (desc !== undefined && desc.enumerable) {
-                                to[nextKey] = nextSource[nextKey];
-                            }
-                        }
-                    }
-                    return to;
-                }
-            });
-        } #}
-
-        var head=document.getElementsByTagName("head")[0],insertBefore=head.insertBefore;head.insertBefore=function(e,r){e.href&&0===e.href.indexOf("https://fonts.googleapis.com/css?family=Roboto")||insertBefore.call(head,e,r)},Object.assign||Object.defineProperty(Object,"assign",{enumerable:!1,configurable:!0,writable:!0,value:function(e,r){"use strict";if(null==e)throw new TypeError("Cannot convert first argument to object");for(var t=Object(e),n=1;n<arguments.length;n++){var o=arguments[n];if(null!=o)for(var a=Object.keys(Object(o)),i=0,s=a.length;i<s;i++){var c=a[i],f=Object.getOwnPropertyDescriptor(o,c);void 0!==f&&f.enumerable&&(t[c]=o[c])}}return t}});
-
-        {# function google_maps_init() {
-            'use strict'
-
-            var bubbleandsqueak = {lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }}}
-            var markerElement = document.getElementById('marker')
-            var mapElement = document.getElementById('map')
-            var map = new google.maps.Map(mapElement, {
-                zoom: {{ page.header.googlemaps.zoom }},
-                center: bubbleandsqueak,
-                styles: [
-                    {
-                        "featureType": "water",
-                        "stylers": [
-                            {
-                                "color": "#40c1d9"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "color": "#f5f6f6"
-                            },
-                            {
-                                "weight": 6
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "color": "#008199"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "color": "#bfeaf2"
-                            },
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "color": "#7fd5e5"
-                            },
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "labels.icon"
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "stylers": [
-                            {
-                                "lightness": 0
-                            },
-                            {
-                                "color": "#bfdbdd"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape.man_made",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "lightness": 100
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "lightness": -100
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "hue": "#40939b"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "lightness": 100
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "labels.icon",
-                        "stylers": [
-                            {
-                                "hue": "#006f79"
-                            },
-                            {
-                                "saturation": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#7fb7bc"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#00accc"
-                            },
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#bfdbdd"
-                            },
-                            {
-                                "lightness": 0
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    }
-                ]
-            });
-            var icon = {
-                url: '{{ theme_url }}/dist/assets/img/location-pin.svg',
-                anchor: new google.maps.Point(69,118),
-                scaledSize: new google.maps.Size(140,140)
-            };
-            var marker = new google.maps.Marker({
-                position: bubbleandsqueak,
-                map: map,
-                icon: icon
-            });
-            // map.markers.push(marker);
-            var infowindow = new google.maps.InfoWindow({
-                content: markerElement.innerHTML
-            });
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
-            markerElement.style.opacity = 1; //
-            // listen for the window resize event & trigger Google Maps to update too
-            window.onresize = function() {
-                var currCenter = map.getCenter();
-                google.maps.event.trigger(map, 'resize');
-                map.setCenter(currCenter);
-            };
-        }; #}
-
-        function google_maps_init(){"use strict";var e={lat:{{ page.header.googlemaps.latitude }},lng:{{ page.header.googlemaps.longitude }}},t=(document.getElementById("marker"),document.getElementById("map")),l=new google.maps.Map(t,{zoom:{{ page.header.googlemaps.zoom }},center:e,styles:[{featureType:"water",stylers:[{color:"#40c1d9"}]},{featureType:"administrative",elementType:"labels.text.stroke",stylers:[{color:"#f5f6f6"},{weight:6}]},{featureType:"administrative",elementType:"labels.text.fill",stylers:[{color:"#008199"}]},{featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#bfeaf2"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.stroke",stylers:[{color:"#7fd5e5"},{lightness:0}]},{featureType:"road",elementType:"labels.text.stroke",stylers:[{lightness:0}]},{featureType:"road",elementType:"labels.text.fill",stylers:[{lightness:0}]},{featureType:"road.highway",elementType:"labels.icon"},{featureType:"landscape",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape",stylers:[{lightness:0},{color:"#bfdbdd"}]},{featureType:"landscape.man_made",stylers:[{visibility:"off"}]},{featureType:"water",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"water",elementType:"labels.text.fill",stylers:[{lightness:-100}]},{featureType:"poi",elementType:"labels.text.fill",stylers:[{hue:"#40939b"}]},{featureType:"poi",elementType:"labels.text.stroke",stylers:[{lightness:100}]},{featureType:"poi",elementType:"labels.icon",stylers:[{hue:"#006f79"},{saturation:0}]},{featureType:"poi",elementType:"geometry",stylers:[{visibility:"on"},{color:"#7fb7bc"}]},{featureType:"road.highway",elementType:"geometry.fill",stylers:[{color:"#00accc"},{lightness:0}]},{featureType:"road.arterial",elementType:"geometry.fill",stylers:[{color:"#bfdbdd"},{lightness:0}]},{featureType:"poi",elementType:"labels",stylers:[{visibility:"simplified"}]}]}),s={url:"{{ theme_url }}/dist/assets/img/location-pin.svg",anchor:new google.maps.Point(69,118),scaledSize:new google.maps.Size(140,140)};new google.maps.Marker({position:e,map:l,icon:s});window.onresize=function(){var e=l.getCenter();google.maps.event.trigger(l,"resize"),l.setCenter(e)}};
-
-        {# function google_maps_lazyload(api_key) {
-            'use strict'
-
-            if (api_key) {
-                var options = {
-                    rootMargin: '100px',
-                    threshold: 0
-                };
-
-                var map = document.getElementById('map');
-
-                var observer = new IntersectionObserver(
-                    function(entries, self) {
-                        // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
-                        var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
-                        if (isIntersecting) {
-                            var mapsJS = document.createElement('script')
-                            mapsJS.src = 'https://maps.googleapis.com/maps/api/js?callback=google_maps_init&key=' + api_key
-                            document.getElementsByTagName('head')[0].appendChild(mapsJS)
-                            self.unobserve(map)
-                        }
-                    },
-                    options
-                );
-
-                observer.observe(map);
-            };
-        }; #}
-
-        function google_maps_lazyload(e){"use strict";if(e){var t=document.getElementById("map");new IntersectionObserver(function(n,o){if("boolean"==typeof n[0].isIntersecting?n[0].isIntersecting:n[0].intersectionRatio>0){var s=document.createElement("script");s.src="https://maps.googleapis.com/maps/api/js?callback=google_maps_init&key="+e,document.getElementsByTagName("head")[0].appendChild(s),o.unobserve(t)}},{rootMargin:"100px",threshold:0}).observe(t)}};
-
-        google_maps_lazyload('{{ page.header.googlemaps.key }}');
-
-    </script>
-
-{% endif %}

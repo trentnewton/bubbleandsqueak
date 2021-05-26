@@ -1,0 +1,84 @@
+extends@: default
+title: Site Details
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.facebook:
+              type: fieldset
+              title: Facebook Page
+              help: Help text
+              info: Facebook page information
+              text: URL & Icon for Facebook Page
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.facebook.icon:
+                  type: iconpicker
+                  label: Icon
+                header.facebook.url:
+                  type: text
+                  label: Facebook Page URL
+            header.instagram:
+              type: fieldset
+              title: Instagram Page
+              help: Help text
+              info: Instagram page information
+              text: URL & Icon for Instagram Page
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.instagram.icon:
+                  type: iconpicker
+                  label: Icon
+                header.instagram.url:
+                  type: text
+                  label: Instagram Page URL
+            header.twitter:
+              type: fieldset
+              title: Twitter Account
+              help: Help text
+              info: Name of Twitter Account
+              text: URL & Icon for Twitter Account
+              collapsed: true      # Initial state of fieldset (see collapsible option)
+              collapsible: true    # Whether one can expand the fieldset or not
+              fields:
+                header.twitter.icon:
+                  type: iconpicker
+                  label: Icon
+                header.twitter.name:
+                  type: text
+                  label: Twitter Account name
+            header.number:
+              type: text
+              label: Main Phone Nmmber
+            header.googlemaps_key:
+              type: text
+              label: Google Maps API Key
+            header.googleanalytics:
+              type: text
+              label: Google Analytics Key
+            header.facebookappkey:
+              type: text
+              label: Facebook App Key
+            header.privacy_policy_page:
+              type: pages
+              size: medium
+              classes: fancy
+              show_all: false
+              show_modular: false
+              show_root: false
+              help: PLUGIN_ADMIN.HOME_PAGE_HELP
+              label: Privacy Policy Page
+            header.terms_and_conditions_page:
+              type: pages
+              size: medium
+              classes: fancy
+              show_all: false
+              show_modular: false
+              show_root: false
+              help: PLUGIN_ADMIN.HOME_PAGE_HELP
+              label: Terms and Conditions Page
