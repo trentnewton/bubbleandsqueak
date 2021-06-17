@@ -130,11 +130,7 @@ let webpackConfig = {
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [ "@babel/preset-env" ],
-            compact: false
-          }
+          loader: 'babel-loader'
         }
       }
     ]
