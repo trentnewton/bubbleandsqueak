@@ -27,7 +27,7 @@
                 <div class="cell medium-6{% if page.header.image_align == 'right' %} image-right small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %} image-area">
                     {% set text_image = page.media.images|first.derivatives(1230).cropZoom(1230,1230).sizes('(max-width:26em) 100vw, 50vw') %}
                     <picture>
-                        <source data-srcset="{{ text_image.srcset(false)|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }}" type="image/webp">
+                        {# <source data-srcset="{{ text_image.srcset(false)|replace({'jpg' : "jpg.webp", 'jpeg' : 'jpeg.webp'}) }}" type="image/webp"> #}
                         <source data-srcset="{{ text_image.srcset(false) }}" type="image/jpeg"> 
                         <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAApJREFUeNpjYAAAAAIAAeUn3vwAAAAASUVORK5CYII=" width="{{ page.media.images|first.width }}" height="{{ page.media.images|first.height }}" alt="{{ filename_ext[0]|humanize|replace({'-' : " "}) }}">
                     </picture>

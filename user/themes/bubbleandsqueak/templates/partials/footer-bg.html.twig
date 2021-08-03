@@ -16,7 +16,8 @@
                 url({{ background_image.url|replace({'jpg' : 'jpg.webp', 'jpeg' : 'jpeg.webp'}) }}); #}
             background-image:
                 {# linear-gradient(to top, rgba(0, 172, 204, 0.7), rgba(0, 129, 153, 0.9)), #}
-                url({{ background_image.url|replace({'jpg' : 'jpg.webp', 'jpeg' : 'jpeg.webp'}) }});
+                {# url({{ background_image.url|replace({'jpg' : 'jpg.webp', 'jpeg' : 'jpeg.webp'}) }}); #}
+                url({{ background_image.url }});
         }
     </style>
 {# {% else %}
