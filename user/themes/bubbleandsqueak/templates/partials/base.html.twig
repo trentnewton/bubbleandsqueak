@@ -398,7 +398,8 @@
 
                 function initialise() {
                     {% for p in my_collection %}
-                        initialise{{ p.title|hyphenize }}();
+                        {% set jsSafeTitle = p.title|replace({' ': '_', '-': '_', '.': '_', ',': '_', '\'': '_'})|lower %}
+                        initialise{{ jsSafeTitle }}();
                     {% endfor %}
                 }
 

@@ -1,4 +1,7 @@
 {% set site_details = page.find('/site-details') %}
+{# {% set jsSafeTitle = page.header.title|lower|replace({' ': '-', '_': '-'}) %} #}
+{% set jsSafeTitle = page.header.title|replace({' ': '_', '-': '_', '.': '_', ',': '_', '\'': '_'})|lower %}
+
 <section id="{{ page.header.title|hyphenize }}" class="wrapper spotlight">
     <div class="grid-container inner">
         <div class="grid-x grid-margin-x align-middle">
@@ -109,7 +112,7 @@
                 <div class="cell medium-6{% if page.header.map_align == 'right' %} image-right small-order-1 medium-order-2{% else %} small-order-1 medium-order-1{% endif %}">
                     {% if page.header.googlemaps.latitude %}
                         <div class="map-container">
-                            <div id="map-{{ page.header.title|hyphenize }}" class="google-map"></div>
+                            <div id="map-{{ jsSafeTitle }}" class="google-map"></div>
                         </div>
                     {% endif %}
                 </div>
@@ -222,26 +225,26 @@
     </div>
     {% if page.header.googlemaps.latitude %}
         <script>
-            const {{ page.header.title|hyphenize }} = { lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }} };
+            const {{ jsSafeTitle }} = { lat: {{ page.header.googlemaps.latitude }}, lng: {{ page.header.googlemaps.longitude }} };
 
-            function initialise{{ page.header.title|hyphenize }}() {
+            function initialise{{ jsSafeTitle }}() {
                 'use strict'
 
-                const mapProp{{ page.header.title|hyphenize }} = {
-                    center: {{ page.header.title|hyphenize }},
+                const mapProp{{ jsSafeTitle }} = {
+                    center: {{ jsSafeTitle }},
                     zoom: {{ page.header.googlemaps.zoom }},
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     styles: bubbleAndSqueakMapStyles
                 };
-                const map{{ page.header.title|hyphenize }} = new google.maps.Map(document.getElementById("map-{{ page.header.title|hyphenize }}"), mapProp{{ page.header.title|hyphenize }});
-                const marker{{ page.header.title|hyphenize }} = new google.maps.Marker({
-                    position: {{ page.header.title|hyphenize }},
+                const map{{ jsSafeTitle }} = new google.maps.Map(document.getElementById("map-{{ jsSafeTitle }}"), mapProp{{ jsSafeTitle }});
+                const marker{{ jsSafeTitle }} = new google.maps.Marker({
+                    position: {{ jsSafeTitle }},
                     animation: google.maps.Animation.DROP,
                     icon: {url:'{{ theme_url }}/dist/assets/img/location-pin.svg', scaledSize: new google.maps.Size(140, 140), anchor: new google.maps.Point(69,118)},
-                    map: map{{ page.header.title|hyphenize }}
+                    map: map{{ jsSafeTitle }}
                 });
 
-                marker{{ page.header.title|hyphenize }}.setMap(map{{ page.header.title|hyphenize }});
+                marker{{ jsSafeTitle }}.setMap(map{{ jsSafeTitle }});
 
                 {# const markerElement = document.getElementById('marker') #}
 
@@ -249,16 +252,16 @@
                     content: markerElement.innerHTML
                 }); #}
 
-                {# google.maps.event.addListener(marker{{ page.header.title|hyphenize }}, 'click', function () {
-                    infowindow.open(map{{ page.header.title|hyphenize }}, marker{{ page.header.title|hyphenize }});
+                {# google.maps.event.addListener(marker{{ jsSafeTitle }}, 'click', function () {
+                    infowindow.open(map{{ jsSafeTitle }}, marker{{ jsSafeTitle }});
                 }); #}
 
                 {# markerElement.style.opacity = 1; #}
 
                 window.onresize = function() {
-                    var currCenter = map{{ page.header.title|hyphenize }}.getCenter();
-                    google.maps.event.trigger(map{{ page.header.title|hyphenize }}, 'resize');
-                    map{{ page.header.title|hyphenize }}.setCenter(currCenter);
+                    var currCenter = map{{ jsSafeTitle }}.getCenter();
+                    google.maps.event.trigger(map{{ jsSafeTitle }}, 'resize');
+                    map{{ jsSafeTitle }}.setCenter(currCenter);
                 };
 
             };
